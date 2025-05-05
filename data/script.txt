@@ -1,0 +1,20 @@
+-- Bảng lưu thông tin các trường đại học
+CREATE TABLE universities (
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    homepage TEXT,
+    blog_url TEXT,
+    quiz_url TEXT,
+    return_url TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Bảng lưu từng section nội dung (Giới thiệu, Tuyển sinh, Tin tức...)
+CREATE TABLE university_sections (
+    id SERIAL PRIMARY KEY,
+    university_id INT REFERENCES universities(id),
+    section_title TEXT NOT NULL,
+    content TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
