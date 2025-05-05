@@ -157,7 +157,7 @@ export const Homepage = () => {
           >
             {[
               { number: '100+', label: 'Trường Đại học' },
-              { number: '1000+', label: 'Ngành học' },
+              { number: '300+', label: 'Ngành học' },
               { number: '50K+', label: 'Học sinh tư vấn' },
               { number: '95%', label: 'Độ hài lòng' }
             ].map((stat, index) => (
@@ -165,7 +165,7 @@ export const Homepage = () => {
               <Stack key={index} gap={2}>
 
                 <Heading size="2xl" >
-                  
+
                   {stat.number}
         
                 </Heading>
