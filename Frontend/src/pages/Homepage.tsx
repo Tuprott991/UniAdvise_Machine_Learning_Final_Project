@@ -161,14 +161,15 @@ export const Homepage = () => {
               { number: '50K+', label: 'Học sinh tư vấn' },
               { number: '95%', label: 'Độ hài lòng' }
             ].map((stat, index) => (
+
               <Stack key={index} gap={2}>
-                <Heading 
-                  size="2xl" 
-                  bgGradient="linear(to-r, blue.400, purple.400)" 
-                  bgClip="text"
-                >
+
+                <Heading size="2xl" >
+                  
                   {stat.number}
+        
                 </Heading>
+                
                 <Text fontSize="lg" fontWeight="medium" color={useColorModeValue('gray.600', 'gray.300')}>
                   {stat.label}
                 </Text>

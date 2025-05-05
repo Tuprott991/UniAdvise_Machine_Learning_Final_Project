@@ -20,6 +20,7 @@ export const UniversityCard = ({ university }: UniversityCardProps) => {
           <Badge colorScheme="green">
             {new Intl.NumberFormat('vi-VN').format(university.tuitionFee)}đ/năm
           </Badge>
+          <Badge colorScheme = "red"> Đánh giá: {university.rating}</Badge>
         </Stack>
         <Link to={`/university/${university.id}`} >
           <Button colorScheme="blue" width="full">

@@ -44,7 +44,6 @@ export const Universities = () => {
           {/* Select mới của Chakra UI */}
           <Select.Root value={sortBy} onValueChange={({ value }) => setSortBy(value)} collection={sortOptions}>
             <Select.HiddenSelect />
-            <Select.Label>Sắp xếp theo</Select.Label>
             <Select.Control>
               <Select.Trigger>
                 <Select.ValueText placeholder="Chọn tiêu chí" />
