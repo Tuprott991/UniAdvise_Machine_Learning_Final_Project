@@ -1,4 +1,4 @@
-import { Box, Flex, Image, Text } from '@chakra-ui/react';
+import { Box, Flex, Image, Text, Button } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import logo from '@assets/logo.png';
 import { text_blue } from '@styles';
@@ -62,6 +62,30 @@ export const Header = () => {
               </Box>
             </Link>
           ))}
+        </Flex>
+
+        {/* Login and Register Buttons */}
+        <Flex gap={2}>
+          <Link to="/login">
+            <Button
+              variant="outline"
+              color={text_blue}
+              borderColor={text_blue}
+              _hover={{ bg: 'gray.100' }}
+              size="sm"
+            >
+              Đăng nhập
+            </Button>
+          </Link>
+          <Link to="/register">
+            <Button
+              colorScheme={text_blue}
+              size="sm"
+              _hover={{ bg: `${text_blue}.600` }}
+            >
+              Đăng ký
+            </Button>
+          </Link>
         </Flex>
       </Flex>
     </Box>

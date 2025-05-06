@@ -6,7 +6,8 @@ import { Universities } from '@pages/Universities';
 import { UniversityDetail } from '@pages/UniversityDetail';
 import { Chatbot } from '@pages/Chatbot';
 import { About } from '@pages/About';
-
+import { Login } from '@pages/Login';
+import { Register } from '@pages/Register';
 export function App() {
   return (
     <>
@@ -17,6 +18,9 @@ export function App() {
         <Route path="/university/:id" element={<UniversityDetail />} />
         <Route path="/chatbot" element={<Chatbot />} />
         <Route path="/about" element={<About />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+
       </Routes>
       <Footer />
     </>
