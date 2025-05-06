@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 import { useColorModeValue } from '../components/ui/color-mode';
 
 export const Homepage = () => {
-  const bgGradient = useColorModeValue("gray.800", "gray.100");
+  const bgGradient = useColorModeValue("gray.100", "gray.800");
   
   
   return (
     <Box>
-      <Box bgGradient={bgGradient} color="white" minH="90vh" display="flex" alignItems="center">
+      <Box bg={bgGradient} color="black" minH="90vh" display="flex" alignItems="center">
         <Container maxW="1200px">
           <Grid templateColumns={{ base: '1fr', lg: '1fr 1fr' }} gap={12} alignItems="center">
             <Stack gap={8}>
@@ -18,8 +18,7 @@ export const Homepage = () => {
               size="3xl" 
               lineHeight="1.2"
               fontWeight="bold"
-              bgGradient={bgGradient}
-              bgClip="text"
+              color={useColorModeValue("blue.600", "blue.300")}
             >
               Khám phá tương lai học vấn của bạn với AI
             </Heading>
