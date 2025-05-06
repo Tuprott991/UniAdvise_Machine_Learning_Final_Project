@@ -45,7 +45,6 @@ import {
       }
       // Placeholder for API call
       console.log("Register data:", registerData);
-      // Replace with: fetch('/api/register', { method: 'POST', body: JSON.stringify(registerData) })
     };
   
     return (

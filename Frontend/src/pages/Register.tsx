@@ -7,69 +7,102 @@ import {
     Heading,
     Text,
   } from "@chakra-ui/react";
-  import { FormControl, FormLabel } from "@chakra-ui/form-control";
-  import { useState } from "react";
+  import { useForm } from "react-hook-form";
+  
+  type RegisterFormData = {
+    email: string;
+    password: string;
+    confirmPassword: string;
+  };
   
   export const Register = () => {
-    const [registerData, setRegisterData] = useState({
-      email: "",
-      password: "",
-      confirmPassword: "",
-    });
+    const {
+      register,
+      handleSubmit,
+      watch,
+      formState: { errors },
+    } = useForm<RegisterFormData>();
   
-    const handleRegisterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      const { name, value } = e.target;
-      setRegisterData((prev) => ({ ...prev, [name]: value }));
-    };
-  
-    const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      if (registerData.password !== registerData.confirmPassword) {
+    const onSubmit = (data: RegisterFormData) => {
+      if (data.password !== data.confirmPassword) {
         alert("Passwords do not match!");
         return;
       }
       // Placeholder for API call
-      console.log("Register data:", registerData);
-      // Replace with: fetch('/api/register', { method: 'POST', body: JSON.stringify(registerData) })
+      console.log("Register data:", data);
+      // Replace with: fetch('/api/register', { method: 'POST', body: JSON.stringify(data) })
     };
+  
+    const password = watch("password");
   
     return (
       <Box minH="100vh" bg="gray.100" py={10}>
         <Container maxW="container.sm">
           <Stack gap={8} p={6} bg="white" borderRadius="lg" boxShadow="md">
             <Heading textAlign="center">Đăng ký tài khoản</Heading>
-            <form onSubmit={handleRegister}>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <Stack gap={4}>
-                <FormControl isRequired>
-                  <FormLabel>Email</FormLabel>
+                <Box>
+                  <Text fontWeight="medium" mb={2}>
+                    Email <Text as="span" color="red.500">*</Text>
+                  </Text>
                   <Input
-                    name="email"
+                    {...register("email", {
+                      required: "Email là bắt buộc",
+                      pattern: {
+                        value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                        message: "Email không hợp lệ",
+                      },
+                    })}
                     type="email"
-                    value={registerData.email}
-                    onChange={handleRegisterChange}
                     placeholder="Nhập email của bạn"
                   />
-                </FormControl>
-                <FormControl isRequired>
-                  <FormLabel>Mật khẩu</FormLabel>
+                  {errors.email && (
+                    <Text color="red.500" fontSize="sm" mt={1}>
+                      {errors.email.message}
+                    </Text>
+                  )}
+                </Box>
+                <Box>
+                  <Text fontWeight="medium" mb={2}>
+                    Mật khẩu <Text as="span" color="red.500">*</Text>
+                  </Text>
                   <Input
-                    name="password"
+                    {...register("password", {
+                      required: "Mật khẩu là bắt buộc",
+                      minLength: {
+                        value: 6,
+                        message: "Mật khẩu phải có ít nhất 6 ký tự",
+                      },
+                    })}
                     type="password"
-                    value={registerData.password}
-                    onChange={handleRegisterChange}
                     placeholder="Nhập mật khẩu"
                   />
-                </FormControl>
-                <FormControl isRequired>
-                  <FormLabel>Xác nhận mật khẩu</FormLabel>
+                  {errors.password && (
+                    <Text color="red.500" fontSize="sm" mt={1}>
+                      {errors.password.message}
+                    </Text>
+                  )}
+                </Box>
+                <Box>
+                  <Text fontWeight="medium" mb={2}>
+                    Xác nhận mật khẩu <Text as="span" color="red.500">*</Text>
+                  </Text>
                   <Input
-                    name="confirmPassword"
+                    {...register("confirmPassword", {
+                      required: "Xác nhận mật khẩu là bắt buộc",
+                      validate: (value) =>
+                        value === password || "Mật khẩu không khớp",
+                    })}
                     type="password"
-                    value={registerData.confirmPassword}
-                    onChange={handleRegisterChange}
                     placeholder="Xác nhận mật khẩu"
                   />
-                </FormControl>
+                  {errors.confirmPassword && (
+                    <Text color="red.500" fontSize="sm" mt={1}>
+                      {errors.confirmPassword.message}
+                    </Text>
+                  )}
+                </Box>
                 <Button type="submit" colorScheme="green" size="lg">
                   Đăng ký
                 </Button>

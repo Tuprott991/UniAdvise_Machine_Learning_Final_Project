@@ -7,22 +7,24 @@ import {
     Heading,
     Text,
   } from "@chakra-ui/react";
-  import { FormControl, FormLabel } from "@chakra-ui/form-control";
-  import { useState } from "react";
+  import { useForm } from "react-hook-form";
+  
+  type LoginFormData = {
+    email: string;
+    password: string;
+  };
   
   export const Login = () => {
-    const [loginData, setLoginData] = useState({ email: "", password: "" });
+    const {
+      register,
+      handleSubmit,
+      formState: { errors },
+    } = useForm<LoginFormData>();
   
-    const handleLoginChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      const { name, value } = e.target;
-      setLoginData((prev) => ({ ...prev, [name]: value }));
-    };
-  
-    const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
+    const onSubmit = (data: LoginFormData) => {
       // Placeholder for API call
-      console.log("Login data:", loginData);
-      // Replace with: fetch('/api/login', { method: 'POST', body: JSON.stringify(loginData) })
+      console.log("Login data:", data);
+      // Replace with: fetch('/api/login', { method: 'POST', body: JSON.stringify(data) })
     };
   
     return (
@@ -30,28 +32,50 @@ import {
         <Container maxW="container.sm">
           <Stack gap={8} p={6} bg="white" borderRadius="lg" boxShadow="md">
             <Heading textAlign="center">Đăng nhập tài khoản</Heading>
-            <form onSubmit={handleLogin}>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <Stack gap={4}>
-                <FormControl isRequired>
-                  <FormLabel>Email</FormLabel>
+                <Box>
+                  <Text fontWeight="medium" mb={2}>
+                    Email <Text as="span" color="red.500">*</Text>
+                  </Text>
                   <Input
-                    name="email"
+                    {...register("email", {
+                      required: "Email là bắt buộc",
+                      pattern: {
+                        value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                        message: "Email không hợp lệ",
+                      },
+                    })}
                     type="email"
-                    value={loginData.email}
-                    onChange={handleLoginChange}
                     placeholder="Nhập email của bạn"
                   />
-                </FormControl>
-                <FormControl isRequired>
-                  <FormLabel>Mật khẩu</FormLabel>
+                  {errors.email && (
+                    <Text color="red.500" fontSize="sm" mt={1}>
+                      {errors.email.message}
+                    </Text>
+                  )}
+                </Box>
+                <Box>
+                  <Text fontWeight="medium" mb={2}>
+                    Mật khẩu <Text as="span" color="red.500">*</Text>
+                  </Text>
                   <Input
-                    name="password"
+                    {...register("password", {
+                      required: "Mật khẩu là bắt buộc",
+                      minLength: {
+                        value: 6,
+                        message: "Mật khẩu phải có ít nhất 6 ký tự",
+                      },
+                    })}
                     type="password"
-                    value={loginData.password}
-                    onChange={handleLoginChange}
                     placeholder="Nhập mật khẩu"
                   />
-                </FormControl>
+                  {errors.password && (
+                    <Text color="red.500" fontSize="sm" mt={1}>
+                      {errors.password.message}
+                    </Text>
+                  )}
+                </Box>
                 <Button type="submit" colorScheme="blue" size="lg">
                   Đăng nhập
                 </Button>
