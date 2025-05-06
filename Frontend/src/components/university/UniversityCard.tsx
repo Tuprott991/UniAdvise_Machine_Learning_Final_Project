@@ -15,13 +15,7 @@ export const UniversityCard = ({ university }: UniversityCardProps) => {
         <Text color="gray.600" mb={4} whiteSpace="nowrap" overflow="hidden" textOverflow="ellipsis">
           {university.description}
         </Text>
-        <Stack direction="row" mb={4}>
-          <Badge colorScheme="blue">Điểm chuẩn: {university.entranceScore}</Badge>
-          <Badge colorScheme="green">
-            {new Intl.NumberFormat('vi-VN').format(university.tuitionFee)}đ/năm
-          </Badge>
-          <Badge colorScheme = "red"> Đánh giá: {university.rating}</Badge>
-        </Stack>
+
         <Link to={`/university/${university.id}`} >
           <Button colorScheme="blue" width="full">
             Xem chi tiết

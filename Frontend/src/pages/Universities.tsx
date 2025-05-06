@@ -1,14 +1,22 @@
 "use client";
-import { Box, Container,  Heading, SimpleGrid, Input, Stack, Portal, Select, createListCollection } from "@chakra-ui/react";
+import {
+  Box,
+  Container,
+  Heading,
+  SimpleGrid,
+  Input,
+  Stack,
+  Portal,
+  Select,
+  createListCollection
+} from "@chakra-ui/react";
 import { UniversityCard } from "../components/university/UniversityCard";
 import { universities } from "../constants/universities";
 import { useState } from "react";
 
 const sortOptions = createListCollection({
   items: [
-    { label: "Sắp xếp theo tên", value: "name" },
-    { label: "Sắp xếp theo đánh giá", value: "rating" },
-    { label: "Sắp xếp theo học phí", value: "tuitionFee" },
+    { label: "Sắp xếp theo tên", value: "name" }
   ],
 });
 
@@ -17,15 +25,11 @@ export const Universities = () => {
   const [sortBy, setSortBy] = useState<string[]>(["name"]);
 
   const filteredUniversities = universities
-    .filter(
-      (university) =>
-        university.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        university.location.toLowerCase().includes(searchTerm.toLowerCase())
+    .filter((university) =>
+      university.name.toLowerCase().includes(searchTerm.toLowerCase())
     )
     .sort((a, b) => {
       if (sortBy.includes("name")) return a.name.localeCompare(b.name);
-      if (sortBy.includes("rating")) return b.rating - a.rating;
-      if (sortBy.includes("tuitionFee")) return a.tuitionFee - b.tuitionFee;
       return 0;
     });
 
@@ -36,17 +40,21 @@ export const Universities = () => {
 
         <Stack direction={{ base: "column", md: "row" }} gap={4} mb={8}>
           <Input
-            placeholder="Tìm kiếm theo tên trường hoặc địa điểm"
+            placeholder="Tìm kiếm theo tên trường"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
 
-          {/* Select mới của Chakra UI */}
-          <Select.Root value={sortBy} onValueChange={({ value }) => setSortBy(value)} collection={sortOptions}>
+          {/* Select sắp xếp */}
+          <Select.Root
+            value={sortBy}
+            onValueChange={({ value }) => setSortBy(value)}
+            collection={sortOptions}
+          >
             <Select.HiddenSelect />
             <Select.Control>
               <Select.Trigger>
-                <Select.ValueText placeholder="Chọn tiêu chí" />
+                <Select.ValueText placeholder="Sắp xếp theo" />
               </Select.Trigger>
               <Select.IndicatorGroup>
                 <Select.Indicator />

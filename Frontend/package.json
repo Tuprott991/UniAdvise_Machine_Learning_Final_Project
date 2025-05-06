@@ -10,12 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ark-ui/react": "^5.9.0",
     "@chakra-ui/css-reset": "^2.3.0",
     "@chakra-ui/provider": "^2.4.2",
-    "@chakra-ui/react": "^3.14.2",
+    "@chakra-ui/react": "^3.17.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
-    "framer-motion": "^12.6.2",
+    "framer-motion": "^12.9.7",
     "lucide-react": "^0.484.0",
     "next-themes": "^0.4.6",
     "react": "^19.0.0",
