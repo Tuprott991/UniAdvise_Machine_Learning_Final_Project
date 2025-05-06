@@ -1,6 +1,5 @@
-import os
+
 from dotenv import load_dotenv
-import psycopg
 from psycopg.rows import dict_row
 from datetime import datetime
 from typing import List, Dict
