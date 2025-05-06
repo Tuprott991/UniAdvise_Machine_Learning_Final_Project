@@ -5,9 +5,11 @@ import {
     Button,
     Stack,
     Heading,
-    Text, Link
+    Text,
   } from "@chakra-ui/react";
   import { useForm } from "react-hook-form";
+  import { useAuth } from "../context/AuthContext";
+  import { useNavigate } from "react-router-dom";
   
   type RegisterFormData = {
     email: string;
@@ -22,15 +24,31 @@ import {
       watch,
       formState: { errors },
     } = useForm<RegisterFormData>();
+    const { login } = useAuth();
+    const navigate = useNavigate();
   
-    const onSubmit = (data: RegisterFormData) => {
+    const onSubmit = async (data: RegisterFormData) => {
       if (data.password !== data.confirmPassword) {
         alert("Passwords do not match!");
         return;
       }
-      // Placeholder for API call
-      console.log("Register data:", data);
-      // Replace with: fetch('/api/register', { method: 'POST', body: JSON.stringify(data) })
+      try {
+        const response = await fetch("/api/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+        const result = await response.json();
+        if (response.ok) {
+          login(result.token); // Giả định API trả về token sau khi đăng ký
+          navigate("/"); // Điều hướng về trang chủ
+        } else {
+          alert(result.message || "Đăng ký thất bại!");
+        }
+      } catch (error) {
+        console.error("Error during registration:", error);
+        alert("Có lỗi xảy ra, vui lòng thử lại!");
+      }
     };
   
     const password = watch("password");
@@ -109,14 +127,11 @@ import {
               </Stack>
             </form>
             <Text textAlign="center" fontSize="sm">
-            Đã có tài khoản?{" "}
-            <Link href="/login">
-              <Text as="span" color="blue.500" fontWeight="medium" _hover={{ textDecoration: "underline" }}>
+              Đã có tài khoản?{" "}
+              <Text as="span" color="blue.500">
                 Đăng nhập
               </Text>
-            </Link>
-          </Text>
-
+            </Text>
           </Stack>
         </Container>
       </Box>

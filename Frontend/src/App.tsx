@@ -8,20 +8,28 @@ import { Chatbot } from '@pages/Chatbot';
 import { About } from '@pages/About';
 import { Login } from '@pages/Login';
 import { Register } from '@pages/Register';
+import { ProtectedRoute } from './components/ProtectedRoute';
+
 export function App() {
   return (
     <>
       <Header />
+
       <Routes>
+        {/* Public routes */}
         <Route path="/" element={<Homepage />} />
-        <Route path="/universities" element={<Universities />} />
-        <Route path="/university/:id" element={<UniversityDetail />} />
-        <Route path="/chatbot" element={<Chatbot />} />
-        <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-
+        <Route path="/about" element={<About />} />
+        <Route path="/universities" element={<Universities />} />
+        <Route path="/university/:id" element={<UniversityDetail />} />
+        {/* Protected routes */}
+        <Route element={<ProtectedRoute />}>
+          
+          <Route path="/chatbot" element={<Chatbot />} />
+        </Route>
       </Routes>
+
       <Footer />
     </>
   );

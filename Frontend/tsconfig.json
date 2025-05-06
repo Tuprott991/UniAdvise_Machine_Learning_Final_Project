@@ -94,7 +94,10 @@
       ],
       "@localization/*": [
         "localization/*"
-      ]
+      ],
+      "@context/*": [
+        "context/*"
+      ],
     }
   }
 }
