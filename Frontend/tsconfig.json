@@ -1,7 +1,100 @@
 {
   "files": [],
   "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ]
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ],
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@styles": [
+        "styles/index.ts"
+      ],
+      "@styles/*": [
+        "styles/*"
+      ],
+      "@assets/*": [
+        "assets/*"
+      ],
+      "@components/*": [
+        "components/*"
+      ],
+      "@services/*": [
+        "services/*"
+      ],
+      "@utils/*": [
+        "utils/*"
+      ],
+      "@enums/*": [
+        "enums/*"
+      ],
+      "@models/*": [
+        "models/*"
+      ],
+      "@constants/*": [
+        "constants/*"
+      ],
+      "@hooks/*": [
+        "hooks/*"
+      ],
+      "@store/*": [
+        "store/*"
+      ],
+      "@pages/*": [
+        "pages/*"
+      ],
+      "@tests/*": [
+        "tests/*"
+      ],
+      "@mocks/*": [
+        "mocks/*"
+      ],
+      "@config/*": [
+        "config/*"
+      ],
+      "@types/*": [
+        "types/*"
+      ],
+      "@helpers/*": [
+        "helpers/*"
+      ],
+      "@directives/*": [
+        "directives/*"
+      ],
+      "@pipes/*": [
+        "pipes/*"
+      ],
+      "@guards/*": [
+        "guards/*"
+      ],
+      "@validators/*": [
+        "validators/*"
+      ],
+      "@interceptors/*": [
+        "interceptors/*"
+      ],
+      "@providers/*": [
+        "providers/*"
+      ],
+      "@middlewares/*": [
+        "middlewares/*"
+      ],
+      "@repositories/*": [
+        "repositories/*"
+      ],
+      "@locales/*": [
+        "locales/*"
+      ],
+      "@translations/*": [
+        "translations/*"
+      ],
+      "@localization/*": [
+        "localization/*"
+      ]
+    }
+  }
 }

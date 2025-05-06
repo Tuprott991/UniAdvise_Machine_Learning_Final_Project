@@ -22,7 +22,3 @@ export const universities: University[] = [
     imageUrl: 'https://example.com/university1.jpg'
   }
 ];
-
-
-
-export const text_blue = "#1E40AF";

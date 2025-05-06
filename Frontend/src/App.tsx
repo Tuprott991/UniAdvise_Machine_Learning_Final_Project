@@ -1,11 +1,11 @@
 import { Routes, Route } from 'react-router-dom';
-import { Header } from './components/layout/Header';
-import { Footer } from './components/layout/Footer';
-import { Homepage } from './pages/Homepage';
-import { Universities } from './pages/Universities';
-import { UniversityDetail } from './pages/UniversityDetail';
-import { Chatbot } from './pages/Chatbot';
-import { About } from './pages/About';
+import { Header } from '@components/layout/Header';
+import { Footer } from '@components/layout/Footer';
+import { Homepage } from '@pages/Homepage';
+import { Universities } from '@pages/Universities';
+import { UniversityDetail } from '@pages/UniversityDetail';
+import { Chatbot } from '@pages/Chatbot';
+import { About } from '@pages/About';
 
 export function App() {
   return (

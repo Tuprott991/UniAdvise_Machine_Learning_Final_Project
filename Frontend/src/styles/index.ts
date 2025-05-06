@@ -1,0 +1,1 @@
+export const text_blue = "#1E40AF";
