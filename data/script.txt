@@ -2,10 +2,6 @@
 CREATE TABLE universities (
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
-    homepage TEXT,
-    blog_url TEXT,
-    quiz_url TEXT,
-    return_url TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
