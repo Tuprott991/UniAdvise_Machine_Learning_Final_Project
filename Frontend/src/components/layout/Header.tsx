@@ -1,6 +1,5 @@
 import { Box, Flex, Image } from '@chakra-ui/react';
 import { Link } from 'react-router';
-import { ColorModeButton } from '../ui/color-mode';
 import logo from '../logo/logo.png';
 export const Header = () => {
   return (
@@ -14,7 +13,6 @@ export const Header = () => {
           <Link to="/chatbot">Tư vấn AI</Link>
           <Link to="/about">Về chúng tôi</Link>
         </Flex>
-        <ColorModeButton />
       </Flex>
     </Box>
   );  

@@ -1,57 +1,54 @@
 import { Box, Container, Heading, Text, Button, Image, Stack, Grid } from '@chakra-ui/react';
 import { School, Award, Brain } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useColorModeValue } from '../components/ui/color-mode';
 import { text_blue } from '../constants/universities';
 
-
 export const Homepage = () => {
-  const bgGradient = useColorModeValue("gray.100", "gray.800");
-  
-  
   return (
     <Box>
-      <Box bg={bgGradient} color="black" minH="90vh" display="flex" alignItems="center">
+      <Box bg="gray.100" color="black" minH="90vh" display="flex" alignItems="center">
         <Container maxW="1200px">
           <Grid templateColumns={{ base: '1fr', lg: '1fr 1fr' }} gap={12} alignItems="center">
             <Stack gap={8}>
-            <Heading 
-              as="h1" 
-              size="3xl" 
-              lineHeight="1.2"
-              fontWeight="bold"
-              color={useColorModeValue(text_blue, "blue.300")}
-            >
-              Khám phá tương lai học vấn của bạn với AI
-            </Heading>
+              <Heading 
+                as="h1" 
+                size="3xl" 
+                lineHeight="1.2"
+                fontWeight="bold"
+                color={text_blue}
+              >
+                Khám phá tương lai học vấn của bạn với AI
+              </Heading>
               <Text fontSize="xl" color="black" lineHeight="tall">
                 Hệ thống tư vấn tuyển sinh thông minh kết hợp với AI, giúp bạn tìm ra ngôi trường 
                 và ngành học phù hợp nhất với đam mê và năng lực của mình.
               </Text>
               <Stack direction={{ base: 'column', sm: 'row' }} gap={4}>
-                <Link to="/chatbot" >
-                <Box _hover={{ textDecoration: 'none' }}></Box>
-                  <Button
-                    size="lg"
-                    bg="white"
-                    color= {text_blue}
-                    _hover={{ bg: 'gray.100' }}
-                    px={8}
-                  >
-                    Bắt đầu tư vấn
-                  </Button>
+                <Link to="/chatbot">
+                  <Box _hover={{ textDecoration: 'none' }}>
+                    <Button
+                      size="lg"
+                      bg="white"
+                      color={text_blue}
+                      _hover={{ bg: 'gray.100' }}
+                      px={8}
+                    >
+                      Bắt đầu tư vấn
+                    </Button>
+                  </Box>
                 </Link>
                 <Link to="/universities">
-                <Box _hover={{ textDecoration: 'none' }}></Box>
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    borderColor="white"
-                    _hover={{ bg: 'whiteAlpha.200' }}
-                    px={8}
-                  >
-                    Xem danh sách trường
-                  </Button>
+                  <Box _hover={{ textDecoration: 'none' }}>
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      borderColor="white"
+                      _hover={{ bg: 'whiteAlpha.200' }}
+                      px={8}
+                    >
+                      Xem danh sách trường
+                    </Button>
+                  </Box>
                 </Link>
               </Stack>
             </Stack>
@@ -68,7 +65,6 @@ export const Homepage = () => {
                 height="500px"
                 objectFit="cover"
               />
-              
             </Box>
           </Grid>
         </Container>
@@ -106,12 +102,12 @@ export const Homepage = () => {
               ].map((feature, index) => (
                 <Box
                   key={index}
-                  bg={useColorModeValue('white', 'gray.800')}
+                  bg="white"
                   p={8}
                   borderRadius="xl"
                   boxShadow="xl"
                   border="1px"
-                  borderColor={useColorModeValue('gray.100', 'gray.700')}
+                  borderColor="gray.100"
                   _hover={{
                     transform: 'translateY(-5px)',
                     boxShadow: '2xl',
@@ -119,8 +115,8 @@ export const Homepage = () => {
                   }}
                 >
                   <Box
-                    color= {text_blue}
-                    bg={useColorModeValue('blue.50', 'blue.900')}
+                    color={text_blue}
+                    bg="blue.50"
                     p={3}
                     borderRadius="lg"
                     display="inline-block"
@@ -129,7 +125,7 @@ export const Homepage = () => {
                     {feature.icon}
                   </Box>
                   <Heading size="md" mb={4}>{feature.title}</Heading>
-                  <Text color={useColorModeValue('gray.600', 'gray.400')}>
+                  <Text color="gray.600">
                     {feature.description}
                   </Text>
                 </Box>
@@ -140,7 +136,7 @@ export const Homepage = () => {
       </Box>
 
       {/* Stats Section */}
-      <Box bg={useColorModeValue('blue.50', 'blue.900')} py={20}>
+      <Box bg="blue.50" py={20}>
         <Container maxW="1200px">
           <Grid 
             templateColumns={{ base: 'repeat(2, 1fr)', md: 'repeat(4, 1fr)' }} 
@@ -153,16 +149,11 @@ export const Homepage = () => {
               { number: '50K+', label: 'Học sinh tư vấn' },
               { number: '95%', label: 'Độ hài lòng' }
             ].map((stat, index) => (
-
               <Stack key={index} gap={2}>
-
-                <Heading size="2xl" >
-
+                <Heading size="2xl">
                   {stat.number}
-        
                 </Heading>
-                
-                <Text fontSize="lg" fontWeight="medium" color={useColorModeValue('gray.600', 'gray.300')}>
+                <Text fontSize="lg" fontWeight="medium" color="gray.600">
                   {stat.label}
                 </Text>
               </Stack>
@@ -176,32 +167,32 @@ export const Homepage = () => {
         <Container maxW="900px">
           <Stack 
             gap={8} 
-            bg={useColorModeValue('white', 'gray.800')}
+            bg="white"
             p={12}
             borderRadius="2xl"
             boxShadow="2xl"
             border="1px"
-            borderColor={useColorModeValue('gray.100', 'gray.700')}
+            borderColor="gray.100"
             textAlign="center"
           >
             <Heading size="xl">Sẵn sàng cho tương lai của bạn?</Heading>
-            <Text fontSize="lg" color={useColorModeValue('gray.600', 'gray.400')} maxW="600px" mx="auto">
+            <Text fontSize="lg" color="gray.600" maxW="600px" mx="auto">
               Bắt đầu hành trình tìm kiếm ngôi trường phù hợp với bạn ngay hôm nay. 
               Hoàn toàn miễn phí!
             </Text>
             <Link to="/chatbot">
-            <Box _hover={{ textDecoration: 'none' }}>
-              <Button
-                size="lg"
-                colorScheme= {text_blue}
-                px={8}
-                maxW="400px"
-                mx="auto"
-              >
-                Bắt đầu tư vấn miễn phí
-              </Button>
-            </Box>
-          </Link>
+              <Box _hover={{ textDecoration: 'none' }}>
+                <Button
+                  size="lg"
+                  colorScheme={text_blue}
+                  px={8}
+                  maxW="400px"
+                  mx="auto"
+                >
+                  Bắt đầu tư vấn miễn phí
+                </Button>
+              </Box>
+            </Link>
           </Stack>
         </Container>
       </Box>
