@@ -8,6 +8,8 @@ from typing import Optional, Dict, Annotated
 from app.utils.lightrag_functions import query_rag
 from decimal import Decimal
 
+class (BaseModel):
+
 class GetKnowledgeInput(BaseModel):
     query: str = Field(..., title="Query", description="Query to get information from knowledge graph")
     course_name: Optional[str] = Field(None, title="Course Name", description="Name of the course to query")
