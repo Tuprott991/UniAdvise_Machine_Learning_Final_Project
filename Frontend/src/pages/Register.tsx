@@ -5,7 +5,7 @@ import {
     Button,
     Stack,
     Heading,
-    Text,
+    Text, Link
   } from "@chakra-ui/react";
   import { useForm } from "react-hook-form";
   
@@ -109,11 +109,14 @@ import {
               </Stack>
             </form>
             <Text textAlign="center" fontSize="sm">
-              Đã có tài khoản?{" "}
-              <Text as="span" color="blue.500">
+            Đã có tài khoản?{" "}
+            <Link href="/login">
+              <Text as="span" color="blue.500" fontWeight="medium" _hover={{ textDecoration: "underline" }}>
                 Đăng nhập
               </Text>
-            </Text>
+            </Link>
+          </Text>
+
           </Stack>
         </Container>
       </Box>
