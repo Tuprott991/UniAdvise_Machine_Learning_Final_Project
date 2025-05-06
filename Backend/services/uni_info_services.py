@@ -45,10 +45,4 @@ def format_university_sections(university_id: int):
     return result
 
 
-    
 
-if __name__ == "__main__":
-    # Test thử với một university_id cụ thể
-    test_university_id = 1  # Thay bằng ID thực tế có trong database
-    result = format_university_sections(test_university_id)
-    print(result)

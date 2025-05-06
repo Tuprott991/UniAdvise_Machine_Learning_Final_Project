@@ -78,6 +78,8 @@ for md_file in sorted(folder_path.glob("crawl_*.md")):
 
     print(f"✅ Đã xử lý {md_file.name}")
 
+
+
 conn.commit()
 cursor.close()
 conn.close()
