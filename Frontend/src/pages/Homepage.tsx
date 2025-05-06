@@ -43,7 +43,9 @@ export const Homepage = () => {
                       size="lg"
                       variant="outline"
                       borderColor="white"
-                      _hover={{ bg: 'whiteAlpha.200' }}
+                      bg = "white"
+                      color={text_blue}
+                      _hover={{ bg: 'gray.100' }}
                       px={8}
                     >
                       Xem danh sách trường
@@ -175,7 +177,7 @@ export const Homepage = () => {
             borderColor="gray.100"
             textAlign="center"
           >
-            <Heading size="xl">Sẵn sàng cho tương lai của bạn?</Heading>
+            <Heading color = {text_blue} size="xl">Sẵn sàng cho tương lai của bạn?</Heading>
             <Text fontSize="lg" color="gray.600" maxW="600px" mx="auto">
               Bắt đầu hành trình tìm kiếm ngôi trường phù hợp với bạn ngay hôm nay. 
               Hoàn toàn miễn phí!
