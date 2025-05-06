@@ -1,16 +1,12 @@
-import { Box, Container, Flex, Text, Link, HStack, Icon, VStack } from '@chakra-ui/react';
+import { Box, Container, Flex, Text, Link, HStack, VStack } from '@chakra-ui/react';
 import { Facebook, Instagram, Linkedin } from 'lucide-react';
+import { SocialIcon } from '@components/icons';
 
 export const Footer: React.FC = () => {
   const currentYear: number = new Date().getFullYear();
 
   return (
-    <Box
-      as="footer"
-      bg="#FFFFFF"
-      color="gray.300"
-      boxShadow="sm"
-    >
+    <Box as="footer" bg="#FFFFFF" boxShadow="sm">
       <Container maxW="container.xl" py={{ base: 6, md: 10 }}>
         <VStack align="stretch" as="section">
           <Flex
@@ -29,7 +25,7 @@ export const Footer: React.FC = () => {
             </VStack>
 
             <VStack align={{ base: 'center', md: 'flex-end' }}>
-              <Text fontSize="md" fontWeight="semibold" color="#1E40AF">
+              <Text fontSize="xl" fontWeight="bold" color="#1E40AF">
                 Thông tin
               </Text>
               <Link href="#" fontSize="sm" _hover={{ color: "#1E40AF" }}>
@@ -44,19 +40,13 @@ export const Footer: React.FC = () => {
             </VStack>
 
             <VStack align={{ base: 'center', md: 'flex-end' }}>
-              <Text fontSize="md" fontWeight="semibold" color="#1E40AF">
-                Kết nối
+              <Text fontSize="xl" fontWeight="bold" color="#1E40AF">
+                Liên hệ
               </Text>
               <HStack>
-                <Link href="#">
-                  <Icon as={Facebook} w={5} h={5} />
-                </Link>
-                <Link href="#">
-                  <Icon as={Instagram} w={5} h={5} />
-                </Link>
-                <Link href="#">
-                  <Icon as={Linkedin} w={5} h={5} />
-                </Link>
+                <SocialIcon url="#" icon={Facebook} width={8} height={8} />
+                <SocialIcon url="#" icon={Instagram} width={8} height={8} />
+                <SocialIcon url="#" icon={Linkedin} width={8} height={8} />
               </HStack>
             </VStack>
           </Flex>
