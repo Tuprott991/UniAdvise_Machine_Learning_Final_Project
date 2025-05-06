@@ -44,8 +44,8 @@ export const Footer: React.FC = () => {
                 Liên hệ
               </Text>
               <HStack>
-                <SocialIcon url="#" icon={Facebook} width={8} height={8} />
-                <SocialIcon url="#" icon={Instagram} width={8} height={8} />
+                <SocialIcon url="https://www.facebook.com/ktu.tu.75" icon={Facebook} width={8} height={8} />
+                <SocialIcon url="https://www.instagram.com/ktu.tu" icon={Instagram} width={8} height={8} />
                 <SocialIcon url="#" icon={Linkedin} width={8} height={8} />
               </HStack>
             </VStack>
