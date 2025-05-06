@@ -37,13 +37,3 @@ class university_section(BaseModel):
     content: str = Field(..., title="Nội dung của section")
     created_at: datetime = Field(..., title="Thời gian tạo")
 
-class User (BaseModel):
-    """
-    Mô hình dữ liệu cho bảng users
-    """
-    id: int = Field(..., title="ID của người dùng")
-    username: str = Field(..., title="Tên người dùng")
-    password: str = Field(..., title="Mật khẩu")
-    email: str = Field(..., title="Email")
-    tags: List[str] = Field(..., title="Tags của người dùng")
-    created_at: datetime = Field(..., title="Thời gian tạo")
