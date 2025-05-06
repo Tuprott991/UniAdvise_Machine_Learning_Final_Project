@@ -24,3 +24,6 @@ class User(BaseModel):
     fullname: str
     nickname: str
     list_message: Optional[list] = None
+    #    threads TEXT[],
+    threads: Optional[list] = None 
+

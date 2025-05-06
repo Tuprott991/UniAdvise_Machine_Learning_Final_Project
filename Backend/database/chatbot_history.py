@@ -25,7 +25,7 @@ def init_chat_history_table():
             cur.execute("""
                 CREATE TABLE IF NOT EXISTS message (
                     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-                    thread_id VARCHAR(255) NOT NULL,
+                    thread_id VARCHAR(255) NOT NULL, 
                     question TEXT NOT NULL,
                     answer TEXT NOT NULL,
                     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -39,7 +39,7 @@ def init_chat_history_table():
             """)
         conn.commit()
 
-def save_chat_history(course_id: UUID, thread_id: str, question: str, answer: str) -> Dict:
+def save_chat_history(user_id: int, thread_id: str, question: str, answer: str) -> Dict:
     """
     Lưu lịch sử chat vào database
     
@@ -64,14 +64,14 @@ def save_chat_history(course_id: UUID, thread_id: str, question: str, answer: st
             # Step 2: Append the message_id into the course's threads list
             cur.execute(
                 """
-                UPDATE course
+                UPDATE User
                 SET threads = CASE
                     WHEN %s = ANY(threads) THEN threads
                     ELSE array_append(threads, %s)
                 END 
                 WHERE id = %s
                 """,
-                (thread_id, thread_id, course_id)
+                (thread_id, thread_id, user_id)
             )
             
             # Commit the changes after both the insert and update
