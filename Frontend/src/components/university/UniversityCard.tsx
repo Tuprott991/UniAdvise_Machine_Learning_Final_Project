@@ -1,4 +1,4 @@
-import { Box, Image, Heading, Text, Badge, Stack, Button } from '@chakra-ui/react';
+import { Box, Image, Heading, Text, Button } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import { University } from '../../types/models';
 
