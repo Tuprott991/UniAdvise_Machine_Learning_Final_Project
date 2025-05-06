@@ -1,4 +1,4 @@
-import { Box, Container, Heading, Text, Image, Button, Flex, Stack } from '@chakra-ui/react';
+import { Box, Container, Heading, Text, Image, Button, Flex } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { universities } from '../constants/universities';
