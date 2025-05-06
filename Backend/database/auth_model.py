@@ -23,3 +23,4 @@ class User(BaseModel):
     email: str
     fullname: str
     nickname: str
+    list_message: Optional[list] = None
