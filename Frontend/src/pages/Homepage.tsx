@@ -2,6 +2,8 @@ import { Box, Container, Heading, Text, Button, Image, Stack, Grid } from '@chak
 import { School, Award, Brain } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useColorModeValue } from '../components/ui/color-mode';
+import { text_blue } from '../constants/universities';
+
 
 export const Homepage = () => {
   const bgGradient = useColorModeValue("gray.100", "gray.800");
@@ -18,7 +20,7 @@ export const Homepage = () => {
               size="3xl" 
               lineHeight="1.2"
               fontWeight="bold"
-              color={useColorModeValue("blue.600", "blue.300")}
+              color={useColorModeValue(text_blue, "blue.300")}
             >
               Khám phá tương lai học vấn của bạn với AI
             </Heading>
@@ -32,7 +34,7 @@ export const Homepage = () => {
                   <Button
                     size="lg"
                     bg="white"
-                    color="blue.600"
+                    color= {text_blue}
                     _hover={{ bg: 'gray.100' }}
                     px={8}
                   >
@@ -78,7 +80,7 @@ export const Homepage = () => {
           <Stack gap={16}>
             <Stack gap={4} textAlign="center">
               <Heading size="2xl">Tại sao chọn TuyenSinhAI?</Heading>
-              <Text fontSize="xl" color="gray.600" maxW="800px" mx="auto">
+              <Text fontSize="xl" color={text_blue} maxW="800px" mx="auto">
                 Chúng tôi kết hợp công nghệ AI tiên tiến với dữ liệu giáo dục toàn diện để mang đến 
                 trải nghiệm tư vấn tuyển sinh tốt nhất cho bạn
               </Text>
@@ -117,7 +119,7 @@ export const Homepage = () => {
                   }}
                 >
                   <Box
-                    color="blue.500"
+                    color= {text_blue}
                     bg={useColorModeValue('blue.50', 'blue.900')}
                     p={3}
                     borderRadius="lg"
@@ -191,7 +193,7 @@ export const Homepage = () => {
             <Box _hover={{ textDecoration: 'none' }}>
               <Button
                 size="lg"
-                colorScheme="blue"
+                colorScheme= {text_blue}
                 px={8}
                 maxW="400px"
                 mx="auto"
