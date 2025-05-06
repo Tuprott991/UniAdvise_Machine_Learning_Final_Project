@@ -56,4 +56,4 @@ async def chat_stream(request: ChatRequest):
         event_generator(request.course_name, request.question, request.thread_id, request.course_id),
         media_type="text/event-stream"
     ) 
-    
+        
