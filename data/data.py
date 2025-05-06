@@ -4,10 +4,10 @@ from pathlib import Path
 
 # Cấu hình kết nối PostgreSQL
 conn = psycopg2.connect(
-    dbname="uniML",
-    user="postgres",
-    password="1234",
-    host="localhost",
+    dbname="postgres",
+    user="admintu",
+    password="uniuno123@",
+    host="uniuno.postgres.database.azure.com",
     port=5432
 )
 cursor = conn.cursor()
@@ -66,7 +66,7 @@ for md_file in sorted(folder_path.glob("crawl_*.md")):
         )
         university_id = cursor.fetchone()[0]
 
-    # Trích và insert từng section
+    
     for section_title, section_body in extract_sections(content).items():
         cursor.execute(
             """
