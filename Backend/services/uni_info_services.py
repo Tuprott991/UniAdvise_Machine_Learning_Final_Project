@@ -16,6 +16,13 @@ def all_universities_json():
     return universities_json
 
 
+def process_data(list_data: list) -> list:
+    str = list_data[4]['content']
+    str = str.split('\n\n\n## Thẻ')[0]
+    list_data[4]['content'] = str
+    return list_data
+
+
 
 
 def format_university_sections(university_id: int):
@@ -32,7 +39,7 @@ def format_university_sections(university_id: int):
             "content": section["content"]
         }
         sections_json.append(section_json)
-    return sections_json
+    return process_data(sections_json)
 
 
 # print(all_universities_json())
