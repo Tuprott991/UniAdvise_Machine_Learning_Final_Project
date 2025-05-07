@@ -60,7 +60,7 @@ export const UniversityDetail = () => {
         return 'description';
       case 'chương trình đào tạo':
         return 'programmes';
-      case 'ngành học':
+      case 'ngành học & lĩnh vực':
         return 'majors';
       case 'thông tin tuyển sinh':
         return 'admission';
