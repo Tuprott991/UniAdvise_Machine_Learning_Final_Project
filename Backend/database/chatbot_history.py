@@ -39,7 +39,54 @@ def init_chat_history_table():
             """)
         conn.commit()
 
+def create_thread_id_for_user(user_id: int) -> str:
+    """
+    Tạo một ID cuộc trò chuyện mới bằng cách sử dụng UUID
+    """
+    thread_id = str(UUID(int=UUID().int, version=4))
+
+    with get_db_connection() as conn:
+        with conn.cursor() as cur:
+            # Step 1: Insert the new thread_id into user_info table
+            cur.execute(
+                """
+                UPDATE user_info
+                SET threads = array_append(threads, %s)
+                WHERE id = %s
+                """,
+                (thread_id, user_id)
+            )
+            
+            # Step 2: Commit the changes to the database
+            conn.commit()
+    return thread_id
+
+def get_thread_id_for_user(user_id: int) -> List[str]:
+    """
+    Lấy danh sách các ID cuộc trò chuyện của người dùng từ database
+    
+    Args:
+        user_id (int): ID của người dùng
+        
+    Returns:
+        List[str]: Danh sách các ID cuộc trò chuyện
+    """
+    with get_db_connection() as conn:
+        with conn.cursor() as cur:
+            cur.execute(
+                """
+                SELECT threads FROM user_info WHERE id = %s
+                """,
+                (user_id,)
+            )
+            result = cur.fetchone()
+            # Remove duplicates and return unique thread IDs
+            return list(set(result['threads'])) if result and result['threads'] else []
+    
+
+
 def save_chat_history(user_id: int, thread_id: str, question: str, answer: str) -> Dict:
+
     """
     Lưu lịch sử chat vào database
     

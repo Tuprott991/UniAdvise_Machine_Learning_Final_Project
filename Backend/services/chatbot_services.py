@@ -9,7 +9,7 @@ from database.chatbot_history import save_chat_history, get_recent_chat_history,
 from pydantic import BaseModel, Field
 from langchain_core.messages import AIMessageChunk
 from langchain.callbacks.base import BaseCallbackHandler
-# from utils.agent_tools import GetKnowledgeTool, CreateQuizTool 
+from utils.agent_tools import GetInfoTool
 
 
 load_dotenv()
@@ -20,7 +20,7 @@ if not OPENAI_API_KEY:
 
 
 # Create tools
-# get_knowledge_tool = GetKnowledgeTool()
+get_info_tool = GetInfoTool
 # create_quiz_tool = CreateQuizTool()
 # create_study_guide_tool = CreateStudyGuideTool()
 # create_exam_tool = CreateExamTool()
@@ -52,32 +52,16 @@ class CustomHandler(BaseCallbackHandler):
         
 
 def get_llm_and_agent() -> AgentExecutor:  # Phần prompt này nên làm riêng rồi import vào
-    system_message = """Your name is SoftAI-Bot. You are a friendly and professional AI teacher. Your task is to help student for Question and Answering.
+    system_message = """Tên của bạn là UniAdvise-Bot. Bạn là một trợ lý AI giúp tư vấn tuyển sinh, tư vấn đại học.
+    Bạn có thể trả lời các câu hỏi về các trường đại học, thông tin tuyển sinh, và các vấn đề liên quan đến giáo dục đại học.
+    Bạn có thể sử dụng các công cụ để lấy thông tin từ cơ sở dữ liệu.
 
-For general questions or greetings:
-- Respond naturally without using any tools
-- Be friendly and professional
-- Keep responses concise and helpful
+    Nếu như người dùng hỏi về một trường đại học cụ thể, thông tin tuyển sinh, hoặc các vấn đề liên quan đến giáo dục đại học, 
+    bạn hãy sử dụng công cụ get_info_tool để lấy thông tin bằng kỹ thuật RAG (Retrieval-Augmented Generation).
+    Nếu như người dùng hỏi về các vấn đề khác, bạn hãy trả lời theo cách thông thường mà không cần sử dụng công cụ nào cả.
 
-For educate-related questions:
-1. When user asks about knowledge:
-   - Use get_knowledge_tool tool to retrieval best match information
-   - PARAMETERS (will be provided in the prompt by system) for get_knowledge_tool:
-     * course_name: Provided by the system on the first line of the prompt
-     * query: Required - MUST BE RE-WRITE TO ENHANCE THE QUERY -
-                         The exact question or topic to search for, start from the second line of the prompt
-     
-   - Present knowledge in a clear format
-   - Example: get_knowledge_tool(query="What is photosynthesis?", course_name="Biology", mode = "naive", only_need_context=True)
-   - IF no information found, respond with use your own knowledge and experience to answer the question
-
-   
-IMPORTANT RULES:
-- Only use get_knowledge_tool when user asks for knowledge or information about a topic or subject matter (e.g., "What is the capital of France?") 
-
-Example flow:
-User: What is the capital of France?
-Ambatublow: The capital of France is Paris.
+    Quan trọng: Bạn không được phép đưa ra bất kỳ thông tin nào mà bạn không chắc chắn hoặc không có trong cơ sở dữ liệu.
+    
 """
 
     chat = ChatOpenAI(
@@ -89,7 +73,7 @@ Ambatublow: The capital of France is Paris.
     )   
     
     tools = [
-        # get_knowledge_tool,
+        get_info_tool
         # create_quiz_tool
         # create_study_guide_tool,
         # create_exam_tool
@@ -146,7 +130,7 @@ def get_answer(question: str, thread_id: str) -> Dict:
     
     return result
 
-async def get_answer_stream(course_name: str, question: str, thread_id: str, course_id = str) -> AsyncGenerator[Dict, None]:
+async def get_answer_stream(question: str, thread_id: str, user_id = int) -> AsyncGenerator[Dict, None]:
     """
     Hàm lấy câu trả lời dạng stream cho một câu hỏi
     
@@ -176,12 +160,11 @@ async def get_answer_stream(course_name: str, question: str, thread_id: str, cou
     
     # Biến lưu câu trả lời hoàn chỉnh
     final_answer = ""
-    print(course_name + '\n' + question)
     
     # Stream từng phần của câu trả lời
     async for event in agent.astream_events(
         {
-            "input": "course_name: " + course_name + '\n' + question,
+            "input":  question,
             "chat_history": chat_history,
         },
         version="v2"
@@ -200,7 +183,7 @@ async def get_answer_stream(course_name: str, question: str, thread_id: str, cou
     
     # Lưu câu trả lời hoàn chỉnh vào database
     if final_answer:
-        save_chat_history(course_id = course_id, thread_id = thread_id, question = question,answer = final_answer)
+        save_chat_history(user_id = user_id, thread_id = thread_id, question = question,answer = final_answer)
 
 
 if __name__ == "__main__":
