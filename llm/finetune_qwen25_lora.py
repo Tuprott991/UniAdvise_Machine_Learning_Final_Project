@@ -41,7 +41,8 @@ def main():
         model_name,
         device_map="auto",
         torch_dtype=torch.float16,
-        trust_remote_code=True
+        trust_remote_code=True,
+        attn_implementation="flash_attention_2"  # bật FlashAttention 2
     )
     model.gradient_checkpointing_enable()
 
@@ -63,7 +64,7 @@ def main():
 
     # Training arguments
     training_args = TrainingArguments(
-        per_device_train_batch_size=4,
+        per_device_train_batch_size=12,
         gradient_accumulation_steps=2,
         learning_rate=2e-5,
         num_train_epochs=2,
