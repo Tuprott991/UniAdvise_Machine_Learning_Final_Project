@@ -11,12 +11,12 @@ def register(user: RegisterRequest):
         raise HTTPException(status_code=400, detail="Registration failed")
     return token
 
-@router.post("/login", response_model=Token)
+@router.post("/login")
 def login(user: LoginRequest):
-    token = login_user(user)
-    if not token:
+    user_id = login_user(user)
+    if not user_id:
         raise HTTPException(status_code=401, detail="Invalid credentials")
-    return token
+    return user_id
 
 @router.get("/current_user")
 def get_user(token: str):

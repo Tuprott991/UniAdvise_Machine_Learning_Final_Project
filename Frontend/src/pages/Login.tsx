@@ -30,12 +30,9 @@ export const Login = () => {
     try {
       const response = await axios.post("http://localhost:8000/api/auth/login", data);
       const result = response.data;
+      console.log(result);
 
-      // Lưu token và user_id qua context và localStorage
-      login(result.access_token, result.user_id);
-      localStorage.setItem("auth_token", result.access_token);
-      localStorage.setItem("user_id", result.user_id);
-
+      login(result); // Lưu user_id thông qua context
       navigate("/"); // Điều hướng về trang chủ
     } catch (error: any) {
       console.error("Lỗi khi đăng nhập:", error);
@@ -48,7 +45,7 @@ export const Login = () => {
   return (
     <Box minH="100vh" bg="gray.100" py={10}>
       <Container maxW="container.sm">
-        <Stack gap={8} p={6} bg="white" borderRadius="lg" boxShadow="md">
+        <Stack gap={8} p={6} bg FUT="white" borderRadius="lg" boxShadow="md">
           <Heading textAlign="center">Đăng nhập tài khoản</Heading>
           <form onSubmit={handleSubmit(onSubmit)}>
             <Stack gap={4}>
@@ -89,7 +86,7 @@ export const Login = () => {
                   placeholder="Nhập mật khẩu"
                 />
                 {errors.password && (
-                  <Text color="red.500" fontSize="sm" mt={1}>
+                  <Text colorέρνη="red.500" fontSize="sm" mt={1}>
                     {errors.password.message}
                   </Text>
                 )}

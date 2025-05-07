@@ -10,48 +10,88 @@ import {
 import { useForm } from "react-hook-form";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate, Link } from "react-router-dom";
+import { useState } from "react";
 import axios from "axios";
 
-type LoginFormData = {
+
+type RegisterFormData = {
+  fullName: string;
   email: string;
   password: string;
+  confirmPassword: string;
+  isMale?: boolean; // Boolean để biểu thị giới tính
 };
 
-export const Login = () => {
+export const Register = () => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
-  } = useForm<LoginFormData>();
+  } = useForm<RegisterFormData>();
   const { login } = useAuth();
   const navigate = useNavigate();
+  const [isMale, setIsMale] = useState<boolean | undefined>(undefined);
+  const [genderError, setGenderError] = useState<string | null>(null);
 
-  const onSubmit = async (data: LoginFormData) => {
+  const onSubmit = async (data: RegisterFormData) => {
+    if (data.password !== data.confirmPassword) {
+      alert("Mật khẩu không khớp!");
+      return;
+    }
+    if (isMale === undefined) {
+      setGenderError("Vui lòng chọn giới tính");
+      return;
+    }
     try {
-      const response = await axios.post("http://localhost:8000/api/auth/login", data);
+      const response = await axios.post("http://localhost:8000/api/auth/register", {
+        ...data,
+        isMale,
+      });
+    
       const result = response.data;
-
-      // Lưu token và user_id qua context và localStorage
-      login(result.access_token, result.user_id);
-      localStorage.setItem("auth_token", result.access_token);
-      localStorage.setItem("user_id", result.user_id);
-
-      navigate("/"); // Điều hướng về trang chủ
+      console.log(result);
+    
+      login(result); // Giả định API trả về token sau khi đăng ký
+      navigate("/");       // Điều hướng về trang chủ
     } catch (error: any) {
-      console.error("Lỗi khi đăng nhập:", error);
+      console.error("Lỗi khi đăng ký:", error);
       const errorMessage =
-        error.response?.data?.message || "Đăng nhập thất bại!";
+        error.response?.data?.message || "Có lỗi xảy ra, vui lòng thử lại!";
       alert(errorMessage);
     }
   };
+
+  const password = watch("password");
 
   return (
     <Box minH="100vh" bg="gray.100" py={10}>
       <Container maxW="container.sm">
         <Stack gap={8} p={6} bg="white" borderRadius="lg" boxShadow="md">
-          <Heading textAlign="center">Đăng nhập tài khoản</Heading>
+          <Heading textAlign="center">Đăng ký tài khoản</Heading>
           <form onSubmit={handleSubmit(onSubmit)}>
             <Stack gap={4}>
+              <Box>
+                <Text fontWeight="medium" mb={2}>
+                  Họ và Tên <Text as="span" color="red.500">*</Text>
+                </Text>
+                <Input
+                  {...register("fullName", {
+                    required: "Họ và Tên là bắt buộc",
+                    minLength: {
+                      value: 2,
+                      message: "Họ và Tên phải có ít nhất 2 ký tự",
+                    },
+                  })}
+                  type="text"
+                  placeholder="Nhập họ và tên của bạn"
+                />
+                {errors.fullName && (
+                  <Text color="red.500" fontSize="sm" mt={1}>
+                    {errors.fullName.message}
+                  </Text>
+                )}
+              </Box>
               <Box>
                 <Text fontWeight="medium" mb={2}>
                   Email <Text as="span" color="red.500">*</Text>
@@ -94,16 +134,73 @@ export const Login = () => {
                   </Text>
                 )}
               </Box>
-              <Button type="submit" colorScheme="blue" size="lg">
-                Đăng nhập
+              <Box>
+                <Text fontWeight="medium" mb={2}>
+                  Xác nhận mật khẩu <Text as="span" color="red.500">*</Text>
+                </Text>
+                <Input
+                  {...register("confirmPassword", {
+                    required: "Xác nhận mật khẩu là bắt buộc",
+                    validate: (value) =>
+                      value === password || "Mật khẩu không khớp",
+                  })}
+                  type="password"
+                  placeholder="Xác nhận mật khẩu"
+                />
+                {errors.confirmPassword && (
+                  <Text color="red.500" fontSize="sm" mt={1}>
+                    {errors.confirmPassword.message}
+                  </Text>
+                )}
+              </Box>
+              <Box>
+                <Text fontWeight="medium" mb={2}>
+                  Giới tính <Text as="span" color="red.500">*</Text>
+                </Text>
+                <Stack direction="row" gap={4}>
+                  <Button
+                    colorScheme={isMale === true ? "green" : "gray"}
+                    variant={isMale === true ? "solid" : "outline"}
+                    borderWidth={isMale === true ? "2px" : "1px"}
+                    borderColor={isMale === true ? "green.600" : "gray.300"}
+                    onClick={() => {
+                      setIsMale(true);
+                      setGenderError(null);
+                    }}
+                    size="sm"
+                  >
+                    Nam
+                  </Button>
+                  <Button
+                    colorScheme={isMale === false ? "green" : "gray"}
+                    variant={isMale === false ? "solid" : "outline"}
+                    borderWidth={isMale === false ? "2px" : "1px"}
+                    borderColor={isMale === false ? "green.600" : "gray.300"}
+                    onClick={() => {
+                      setIsMale(false);
+                      setGenderError(null);
+                    }}
+                    size="sm"
+                  >
+                    Nữ
+                  </Button>
+                </Stack>
+                {genderError && (
+                  <Text color="red.500" fontSize="sm" mt={1}>
+                    {genderError}
+                  </Text>
+                )}
+              </Box>
+              <Button type="submit" colorScheme="green" size="lg">
+                Đăng ký
               </Button>
             </Stack>
           </form>
           <Text textAlign="center" fontSize="sm">
-            Chưa có tài khoản?{" "}
-            <Link to="/register">
+            Đã có tài khoản?{" "}
+            <Link to="/login">
               <Text as="span" color="blue.500" fontWeight="medium" _hover={{ textDecoration: "underline" }}>
-                Đăng ký ngay
+                Đăng nhập
               </Text>
             </Link>
           </Text>

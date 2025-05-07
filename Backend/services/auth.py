@@ -56,7 +56,7 @@ def register_user(user: RegisterRequest) -> Token:
     return Token(access_token=access_token, user_id=user_id)
 
 # Hàm đăng nhập người dùng
-def login_user(user: LoginRequest) -> Token:    
+def login_user(user: LoginRequest) -> int:
     # Lấy thông tin người dùng từ cơ sở dữ liệu
     db_user_password = get_user_info_by_email(user.email)["password"]
     user_id = get_user_info_by_email(user.email)["id"]
@@ -64,8 +64,8 @@ def login_user(user: LoginRequest) -> Token:
         raise HTTPException(status_code=401, detail="Invalid credentials")
     
     # Tạo và trả về token và user_id
-    access_token = create_access_token(data={"sub": user.email})
-    return Token(access_token=access_token, user_id=user_id)
+    # access_token = create_access_token(data={"sub": user.email})
+    return user_id
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
 
