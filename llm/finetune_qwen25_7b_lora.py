@@ -75,8 +75,8 @@ def main():
     training_args = TrainingArguments(
         per_device_train_batch_size=6,
         gradient_accumulation_steps=2,
-        learning_rate=3e-5,
-        num_train_epochs=2,
+        learning_rate=1e-5,
+        num_train_epochs=7,
         warmup_steps=50,
         logging_steps=10,
         save_steps=200,
@@ -109,13 +109,6 @@ def main():
 
     trainer.train()
 
-    # Merge LoRA weights with the base model
-    model = model.merge_and_unload()
-
-    # Save fine-tuned model and tokenizer
-    model.save_pretrained(output_dir)
-    tokenizer.save_pretrained(output_dir)
-
     # Evaluate on some samples
     print("\n🔎 Perplexity Evaluation on 10 Samples after fine-tuned:")
     for i in range(10):
@@ -124,6 +117,13 @@ def main():
         response = "".join([m["content"] for m in sample["messages"] if m["role"] == "assistant"])
         ppl = compute_perplexity(model, tokenizer, prompt, response)
         print(f"Sample {i+1} - PPL: {ppl:.2f}")
+    
+    # Merge LoRA weights with the base model
+    model = model.merge_and_unload()
+
+    # Save fine-tuned model and tokenizer
+    model.save_pretrained(output_dir)
+    tokenizer.save_pretrained(output_dir)
 
 
 if __name__ == "__main__":
