@@ -30,12 +30,6 @@ def format_university_sections(university_id: int):
         sections_json.append(section_json)
     return sections_json
 
-if __name__ == "__main__":
-    # Test thử với một university_id cụ thể
-    test_university_id = 1  # Thay bằng ID thực tế có trong database
-    result = format_university_sections(test_university_id)
-    print(result)
-
 
 # print(all_universities_json())
 
