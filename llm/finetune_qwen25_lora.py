@@ -92,6 +92,14 @@ def main():
         response_template="<|im_start|>assistant"
     )
 
+    print("\n🔎 Perplexity Evaluation on 10 Samples before fine-tuned:")
+    for i in range(10):
+        sample = dataset[i]
+        prompt = "".join([m["content"] for m in sample["messages"] if m["role"] == "user"])
+        response = "".join([m["content"] for m in sample["messages"] if m["role"] == "assistant"])
+        ppl = compute_perplexity(model, tokenizer, prompt, response)
+        print(f"Sample {i+1} - PPL: {ppl:.2f}")
+
     trainer = SFTTrainer(
         model=model,
         train_dataset=formatted_dataset,
@@ -101,13 +109,16 @@ def main():
 
     trainer.train()
 
+    # Merge LoRA weights with the base model
+    model = model.merge_and_unload()
+
     # Save fine-tuned model and tokenizer
     model.save_pretrained(output_dir)
     tokenizer.save_pretrained(output_dir)
 
     # Evaluate on some samples
-    print("\n🔎 Perplexity Evaluation on 5 Samples:")
-    for i in range(5):
+    print("\n🔎 Perplexity Evaluation on 10 Samples after fine-tuned:")
+    for i in range(10):
         sample = dataset[i]
         prompt = "".join([m["content"] for m in sample["messages"] if m["role"] == "user"])
         response = "".join([m["content"] for m in sample["messages"] if m["role"] == "assistant"])
