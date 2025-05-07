@@ -23,7 +23,7 @@ class ChatResponse(BaseModel):
     answer: str
 
 class ThreadRequest(BaseModel):
-    user_id: int
+    token: str
 
 
 @router.post("/chatt")
@@ -97,7 +97,7 @@ def create_chat_thread(request: ThreadRequest):
     """
     try:
         print(request.user_id)
-        thread_id = create_thread_id_for_user(request.user_id)
+        thread_id = create_thread_id_for_user(request.user_id)  # Tạo thread chat mới cho người dùng
         if not thread_id:
             raise HTTPException(status_code=500, detail="Failed to create chat thread")
         return {"thread_id": thread_id}
