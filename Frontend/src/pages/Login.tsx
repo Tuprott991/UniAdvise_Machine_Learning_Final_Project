@@ -31,10 +31,12 @@ export const Login = () => {
       const response = await axios.post("http://localhost:8000/api/auth/login", data);
       const result = response.data;
 
-      login(result.token); // Lưu token thông qua context
-      console.log(result);
-      localStorage.setItem("token", result.access_token);
-      navigate("/");       // Điều hướng về trang chủ
+      // Lưu token và user_id qua context và localStorage
+      login(result.access_token, result.user_id);
+      localStorage.setItem("auth_token", result.access_token);
+      localStorage.setItem("user_id", result.user_id);
+
+      navigate("/"); // Điều hướng về trang chủ
     } catch (error: any) {
       console.error("Lỗi khi đăng nhập:", error);
       const errorMessage =

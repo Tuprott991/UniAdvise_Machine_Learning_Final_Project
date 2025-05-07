@@ -1,10 +1,10 @@
-// src/context/AuthContext.tsx
 import { createContext, useContext, useState, ReactNode } from "react";
 
 interface AuthContextType {
   isAuthenticated: boolean;
-  token: string | null;
-  login: (token: string) => void;
+  authToken: string | null;
+  userId: string | null;
+  login: (authToken: string, userId: string) => void;
   logout: () => void;
 }
 
@@ -12,33 +12,44 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(
-    !!localStorage.getItem("token")
+    !!localStorage.getItem("auth_token")
   );
-  const [token, setToken] = useState<string | null>(localStorage.getItem("token"));
+  const [authToken, setAuthToken] = useState<string | null>(
+    localStorage.getItem("auth_token")
+  );
+  const [userId, setUserId] = useState<string | null>(
+    localStorage.getItem("user_id")
+  );
 
-  const login = (newToken: string) => {
-    localStorage.setItem("token", newToken);
-    setToken(newToken);
+  const login = (newAuthToken: string, newUserId: string) => {
+    localStorage.setItem("auth_token", newAuthToken);
+    localStorage.setItem("user_id", newUserId);
+    setAuthToken(newAuthToken);
+    setUserId(newUserId);
     setIsAuthenticated(true);
   };
 
   const logout = () => {
-    localStorage.removeItem("token");
-    setToken(null);
+    localStorage.removeItem("auth_token");
+    localStorage.removeItem("user_id");
+    setAuthToken(null);
+    setUserId(null);
     setIsAuthenticated(false);
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, token, login, logout }}>
+    <AuthContext.Provider
+      value={{ isAuthenticated, authToken, userId, login, logout }}
+    >
       {children}
     </AuthContext.Provider>
   );
 };
 
 export const useAuth = () => {
-    const context = useContext(AuthContext);
-    if (context === undefined) {
-      throw new Error("useAuth must be used within an AuthProvider");
-    }
-    return context;
-  };
+  const context = useContext(AuthContext);
+  if (context === undefined) {
+    throw new Error("useAuth must be used within an AuthProvider");
+  }
+  return context;
+};
