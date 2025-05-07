@@ -6,7 +6,7 @@ python-dotenv==1.0.1
 fastapi
 uvicorn
 python-multipart
-"psycopg[binary,pool]"
+# "psycopg[binary,pool]"
 pipmaster
 bcrypt
 pyjwt
@@ -15,4 +15,4 @@ httptools
 langchain_community
 peft 
 trl
-flash-attn --no-build-isolation
+# flash-attn --no-build-isolation
