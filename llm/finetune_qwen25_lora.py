@@ -63,17 +63,18 @@ def main():
 
     # Training arguments
     training_args = TrainingArguments(
-        per_device_train_batch_size=2,
-        gradient_accumulation_steps=4,
+        per_device_train_batch_size=4,
+        gradient_accumulation_steps=2,
         learning_rate=2e-5,
-        num_train_epochs=5,
+        num_train_epochs=2,
         warmup_steps=50,
         logging_steps=10,
         save_steps=200,
         save_total_limit=2,
         output_dir=output_dir,
         bf16=True,
-        report_to="none"
+        report_to="none",
+        label_names=["labels"]  # Thêm dòng này
     )
 
     data_collator = DataCollatorForCompletionOnlyLM(
@@ -97,8 +98,10 @@ def main():
     # Evaluate on some samples
     print("\n🔎 Perplexity Evaluation on 5 Samples:")
     for i in range(5):
-        sample = formatted_dataset[i]
-        ppl = compute_perplexity(model, tokenizer, sample["prompt"], sample["response"])
+        sample = dataset[i]
+        prompt = "".join([m["content"] for m in sample["messages"] if m["role"] == "user"])
+        response = "".join([m["content"] for m in sample["messages"] if m["role"] == "assistant"])
+        ppl = compute_perplexity(model, tokenizer, prompt, response)
         print(f"Sample {i+1} - PPL: {ppl:.2f}")
 
 
