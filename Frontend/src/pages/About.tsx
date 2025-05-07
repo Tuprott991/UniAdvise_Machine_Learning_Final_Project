@@ -35,9 +35,9 @@ export const About = () => {
           <Box mt={8}>
             <Heading size="lg" mb={4}>Liên hệ</Heading>
             <Stack gap={3}>
-              <Text>Email: contact@tuyensinhai.vn</Text>
-              <Text>Điện thoại: 1900 xxxx</Text>
-              <Text>Địa chỉ: Số xx Đường yyyy, Quận zzzz, Thành phố Hà Nội</Text>
+              <Text>Email: cnvt22@clc.fitus.edu.vn</Text>
+              <Text>Điện thoại: 0123456789</Text>
+              <Text>Địa chỉ: 227 Nguyễn Văn Cừ, Phường 4, Quận 5 , Thành phố Hồ Chí Minh , Việt Nam</Text>
             </Stack>
           </Box>
         </Stack>
