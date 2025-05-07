@@ -8,21 +8,42 @@ import {
   Stack,
   Portal,
   Select,
-  createListCollection
+  createListCollection,
+  Spinner,
+  Text
 } from "@chakra-ui/react";
 import { UniversityCard } from "../components/university/UniversityCard";
-import { universities } from "../constants/universities";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const sortOptions = createListCollection({
   items: [
-    { label: "Sắp xếp theo tên", value: "name" }
+    { label: "Sắp xếp theo tên", value: "name" },
   ],
 });
 
 export const Universities = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState<string[]>(["name"]);
+  const [universities, setUniversities] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const fetchUniversities = async () => {
+      try {
+        const response = await axios.get("http://localhost:8000/api/uni_info/universities");
+        setUniversities(response.data);
+      } catch (err: any) {
+        console.error("Lỗi khi gọi API:", err);
+        setError("Không thể tải danh sách trường.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUniversities();
+  }, []);
 
   const filteredUniversities = universities
     .filter((university) =>
@@ -45,7 +66,6 @@ export const Universities = () => {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
 
-          {/* Select sắp xếp */}
           <Select.Root
             value={sortBy}
             onValueChange={({ value }) => setSortBy(value)}
@@ -75,11 +95,17 @@ export const Universities = () => {
           </Select.Root>
         </Stack>
 
-        <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap={8}>
-          {filteredUniversities.map((university) => (
-            <UniversityCard key={university.id} university={university} />
-          ))}
-        </SimpleGrid>
+        {loading ? (
+          <Spinner size="xl" />
+        ) : error ? (
+          <Text color="red.500">{error}</Text>
+        ) : (
+          <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap={8}>
+            {filteredUniversities.map((university) => (
+              <UniversityCard key={university.id} university={university} />
+            ))}
+          </SimpleGrid>
+        )}
       </Container>
     </Box>
   );

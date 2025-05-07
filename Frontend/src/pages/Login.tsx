@@ -1,114 +1,112 @@
 import {
-    Box,
-    Container,
-    Input,
-    Button,
-    Stack,
-    Heading,
-    Text,
-  } from "@chakra-ui/react";
-  import { useForm } from "react-hook-form";
-  import { useAuth } from "../context/AuthContext";
-  import { useNavigate, Link } from "react-router-dom";
-  
-  type LoginFormData = {
-    email: string;
-    password: string;
+  Box,
+  Container,
+  Input,
+  Button,
+  Stack,
+  Heading,
+  Text,
+} from "@chakra-ui/react";
+import { useForm } from "react-hook-form";
+import { useAuth } from "../context/AuthContext";
+import { useNavigate, Link } from "react-router-dom";
+import axios from "axios";
+
+type LoginFormData = {
+  email: string;
+  password: string;
+};
+
+export const Login = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginFormData>();
+  const { login } = useAuth();
+  const navigate = useNavigate();
+
+  const onSubmit = async (data: LoginFormData) => {
+    try {
+      const response = await axios.post("http://localhost:8000/api/auth/login", data);
+      const result = response.data;
+
+      login(result.token); // Lưu token thông qua context
+      console.log(result);
+      localStorage.setItem("token", result.access_token);
+      navigate("/");       // Điều hướng về trang chủ
+    } catch (error: any) {
+      console.error("Lỗi khi đăng nhập:", error);
+      const errorMessage =
+        error.response?.data?.message || "Đăng nhập thất bại!";
+      alert(errorMessage);
+    }
   };
-  
-  export const Login = () => {
-    const {
-      register,
-      handleSubmit,
-      formState: { errors },
-    } = useForm<LoginFormData>();
-    const { login } = useAuth();
-    const navigate = useNavigate();
-  
-    const onSubmit = async (data: LoginFormData) => {
-      try {
-        const response = await fetch("/api/login", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data),
-        });
-        const result = await response.json();
-        if (response.ok) {
-          login(result.token); // Giả định API trả về token
-          navigate("/"); // Điều hướng về trang chủ
-        } else {
-          alert(result.message || "Đăng nhập thất bại!");
-        }
-      } catch (error) {
-        console.error("Error during login:", error);
-        alert("Có lỗi xảy ra, vui lòng thử lại!");
-      }
-    };
-  
-    return (
-      <Box minH="100vh" bg="gray.100" py={10}>
-        <Container maxW="container.sm">
-          <Stack gap={8} p={6} bg="white" borderRadius="lg" boxShadow="md">
-            <Heading textAlign="center">Đăng nhập tài khoản</Heading>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <Stack gap={4}>
-                <Box>
-                  <Text fontWeight="medium" mb={2}>
-                    Email <Text as="span" color="red.500">*</Text>
-                  </Text>
-                  <Input
-                    {...register("email", {
-                      required: "Email là bắt buộc",
-                      pattern: {
-                        value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                        message: "Email không hợp lệ",
-                      },
-                    })}
-                    type="email"
-                    placeholder="Nhập email của bạn"
-                  />
-                  {errors.email && (
-                    <Text color="red.500" fontSize="sm" mt={1}>
-                      {errors.email.message}
-                    </Text>
-                  )}
-                </Box>
-                <Box>
-                  <Text fontWeight="medium" mb={2}>
-                    Mật khẩu <Text as="span" color="red.500">*</Text>
-                  </Text>
-                  <Input
-                    {...register("password", {
-                      required: "Mật khẩu là bắt buộc",
-                      minLength: {
-                        value: 6,
-                        message: "Mật khẩu phải có ít nhất 6 ký tự",
-                      },
-                    })}
-                    type="password"
-                    placeholder="Nhập mật khẩu"
-                  />
-                  {errors.password && (
-                    <Text color="red.500" fontSize="sm" mt={1}>
-                      {errors.password.message}
-                    </Text>
-                  )}
-                </Box>
-                <Button type="submit" colorScheme="blue" size="lg">
-                  Đăng nhập
-                </Button>
-              </Stack>
-            </form>
-            <Text textAlign="center" fontSize="sm">
-              Chưa có tài khoản?{" "}
-              <Link to="/register">
-                <Text as="span" color="blue.500" fontWeight="medium" _hover={{ textDecoration: "underline" }}>
-                  Đăng ký ngay
+
+  return (
+    <Box minH="100vh" bg="gray.100" py={10}>
+      <Container maxW="container.sm">
+        <Stack gap={8} p={6} bg="white" borderRadius="lg" boxShadow="md">
+          <Heading textAlign="center">Đăng nhập tài khoản</Heading>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <Stack gap={4}>
+              <Box>
+                <Text fontWeight="medium" mb={2}>
+                  Email <Text as="span" color="red.500">*</Text>
                 </Text>
-              </Link>
+                <Input
+                  {...register("email", {
+                    required: "Email là bắt buộc",
+                    pattern: {
+                      value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                      message: "Email không hợp lệ",
+                    },
+                  })}
+                  type="email"
+                  placeholder="Nhập email của bạn"
+                />
+                {errors.email && (
+                  <Text color="red.500" fontSize="sm" mt={1}>
+                    {errors.email.message}
+                  </Text>
+                )}
+              </Box>
+              <Box>
+                <Text fontWeight="medium" mb={2}>
+                  Mật khẩu <Text as="span" color="red.500">*</Text>
+                </Text>
+                <Input
+                  {...register("password", {
+                    required: "Mật khẩu là bắt buộc",
+                    minLength: {
+                      value: 6,
+                      message: "Mật khẩu phải có ít nhất 6 ký tự",
+                    },
+                  })}
+                  type="password"
+                  placeholder="Nhập mật khẩu"
+                />
+                {errors.password && (
+                  <Text color="red.500" fontSize="sm" mt={1}>
+                    {errors.password.message}
+                  </Text>
+                )}
+              </Box>
+              <Button type="submit" colorScheme="blue" size="lg">
+                Đăng nhập
+              </Button>
+            </Stack>
+          </form>
+          <Text textAlign="center" fontSize="sm">
+            Chưa có tài khoản?{" "}
+            <Link to="/register">
+              <Text as="span" color="blue.500" fontWeight="medium" _hover={{ textDecoration: "underline" }}>
+                Đăng ký ngay
+              </Text>
+            </Link>
           </Text>
-          </Stack>
-        </Container>
-      </Box>
-    );
-  };
+        </Stack>
+      </Container>
+    </Box>
+  );
+};

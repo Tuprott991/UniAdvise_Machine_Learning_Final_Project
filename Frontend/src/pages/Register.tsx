@@ -11,6 +11,8 @@ import { useForm } from "react-hook-form";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
+import axios from "axios";
+
 
 type RegisterFormData = {
   fullName: string;
@@ -42,24 +44,22 @@ export const Register = () => {
       return;
     }
     try {
-      const response = await fetch("/api/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...data,
-          isMale, // Gửi giá trị boolean từ state
-        }),
+      const response = await axios.post("http://localhost:8000/api/auth/register", {
+        ...data,
+        isMale,
       });
-      const result = await response.json();
-      if (response.ok) {
-        login(result.token); // Giả định API trả về token sau khi đăng ký
-        navigate("/"); // Điều hướng về trang chủ
-      } else {
-        alert(result.message || "Đăng ký thất bại!");
-      }
-    } catch (error) {
+    
+      const result = response.data;
+      console.log(result);
+    
+      login(result.token); // Giả định API trả về token sau khi đăng ký
+      localStorage.setItem("token", result.access_token);
+      navigate("/");       // Điều hướng về trang chủ
+    } catch (error: any) {
       console.error("Lỗi khi đăng ký:", error);
-      alert("Có lỗi xảy ra, vui lòng thử lại!");
+      const errorMessage =
+        error.response?.data?.message || "Có lỗi xảy ra, vui lòng thử lại!";
+      alert(errorMessage);
     }
   };
 
