@@ -59,7 +59,7 @@ export const Homepage = () => {
               display={{ base: 'none', lg: 'block' }}
             >
               <Image
-                src="./tuktu.jpg"
+                src="./school.jpg"
                 alt="Students studying"
                 borderRadius="2xl"
                 boxShadow="2xl"
