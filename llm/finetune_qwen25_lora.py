@@ -84,8 +84,7 @@ def main():
         model=model,
         train_dataset=formatted_dataset,
         args=training_args,
-        data_collator=data_collator,
-        max_seq_length=1024
+        data_collator=data_collator
     )
 
     trainer.train()
