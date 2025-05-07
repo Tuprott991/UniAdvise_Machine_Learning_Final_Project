@@ -18,6 +18,23 @@ interface ChatSession {
   messages: ChatMessage[];
 }
 
+// Tạo instance của axios với cấu hình mặc định
+const api = axios.create({
+  baseURL: 'http://localhost:8000/api',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+
+// Thêm interceptor để gắn token vào header Authorization
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem('token');
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
 export const Chatbot = () => {
   const [currentSessionId, setCurrentSessionId] = useState<string | null>(null);
   const [messages, setMessages] = useState<ChatMessage[]>([
@@ -32,11 +49,15 @@ export const Chatbot = () => {
   const [error, setError] = useState<string | null>(null);
   const [history, setHistory] = useState<ChatSession[]>([]);
 
+  // Giả định user_id được lấy từ localStorage hoặc có thể lấy từ token payload
+  const userId = localStorage.getItem('user_id') || 'default_user'; // Thay thế nếu backend cung cấp user_id qua token
+
   // Lấy lịch sử từ API và sắp xếp mới nhất lên trên
   const fetchChatHistory = useCallback(async () => {
     try {
-      const res = await axios.get<ChatSession[]>('http://localhost:8000/api/chat/history');
-      // Sắp xếp theo id giảm dần (mới nhất lên trên)
+      const res = await api.get<ChatSession[]>('/chat/history', {
+        params: { user_id: userId },
+      });
       const sortedHistory = res.data.sort((a, b) => Number(b.id) - Number(a.id));
       setHistory(sortedHistory);
       return sortedHistory;
@@ -46,13 +67,12 @@ export const Chatbot = () => {
       setHistory([]);
       return [];
     }
-  }, []);
+  }, [userId]);
 
   // Lưu hoặc cập nhật cuộc trò chuyện
   const saveChat = async (session: ChatSession) => {
     try {
-      await axios.post('http://localhost:8000/api/chat/save', session);
-      // Tải lại lịch sử sau khi lưu
+      await api.post('/chat/save', session);
       await fetchChatHistory();
     } catch (err) {
       console.error('Error saving chat:', err);
@@ -65,29 +85,41 @@ export const Chatbot = () => {
     fetchChatHistory();
   }, [fetchChatHistory]);
 
-  const handleNewChat = () => {
+  const handleNewChat = async () => {
     // Lưu cuộc trò chuyện hiện tại nếu có tin nhắn người dùng và không ở session cũ
     if (!currentSessionId && messages.some((msg) => msg.sender === 'user')) {
       const newSession: ChatSession = {
-        id: Date.now().toString(),
+        id: currentSessionId || Date.now().toString(),
         title: messages.find((msg) => msg.sender === 'user')?.content.slice(0, 30) || 'Cuộc trò chuyện mới',
         messages,
       };
-      saveChat(newSession);
+      await saveChat(newSession);
     }
 
-    // Tạo cuộc trò chuyện mới
-    const newMessages: ChatMessage[] = [
-      {
-        id: Date.now().toString(),
-        content: 'Xin chào! Tôi có thể giúp gì cho bạn về tuyển sinh đại học?',
-        sender: 'bot',
-        timestamp: new Date(),
-      },
-    ];
-    setMessages(newMessages);
-    setCurrentSessionId(null);
-    setError(null);
+    // Gửi yêu cầu đến API /chat/create để tạo session mới
+    try {
+      const res = await api.post<{ sessionId: string }>('/chat/create', { user_id: userId });
+      const newSessionId = res.data.sessionId;
+
+      // Tạo cuộc trò chuyện mới
+      const newMessages: ChatMessage[] = [
+        {
+          id: Date.now().toString(),
+          content: 'Xin chào! Tôi có thể giúp gì cho bạn về tuyển sinh đại học?',
+          sender: 'bot',
+          timestamp: new Date(),
+        },
+      ];
+      setMessages(newMessages);
+      setCurrentSessionId(newSessionId);
+      setError(null);
+
+      // Cập nhật lịch sử
+      await fetchChatHistory();
+    } catch (err) {
+      console.error('Error creating new chat:', err);
+      setError('Không thể tạo cuộc trò chuyện mới.');
+    }
   };
 
   const handleSelectSession = (sessionId: string) => {
