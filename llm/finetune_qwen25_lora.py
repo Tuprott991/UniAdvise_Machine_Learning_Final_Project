@@ -82,7 +82,6 @@ def main():
 
     trainer = SFTTrainer(
         model=model,
-        tokenizer=tokenizer,
         train_dataset=formatted_dataset,
         args=training_args,
         data_collator=data_collator,
