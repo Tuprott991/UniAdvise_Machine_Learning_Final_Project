@@ -1,9 +1,11 @@
-import { Box, Flex, Image, Text, Button } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
-import logo from '@assets/logo.png';
-import { text_blue } from '@styles';
-
+import { Box, Flex, Image, Text, Button } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
+import logo from "@assets/logo.png";
+import { text_blue } from "@styles";
+import { useAuth } from "@context/AuthContext";
 export const Header = () => {
+  const { isAuthenticated, logout } = useAuth();
+
   return (
     <Box
       as="header"
@@ -30,7 +32,7 @@ export const Header = () => {
               fontSize="xl"
               fontWeight="bold"
               color={text_blue}
-              display={{ base: 'none', md: 'block' }}
+              display={{ base: "none", md: "block" }}
             >
               UniGuide
             </Text>
@@ -40,9 +42,9 @@ export const Header = () => {
         {/* Navigation */}
         <Flex gap={{ base: 2, md: 4 }}>
           {[
-            { to: '/universities', label: 'Danh sách trường' },
-            { to: '/chatbot', label: 'Tư vấn AI' },
-            { to: '/about', label: 'Về chúng tôi' },
+            { to: "/universities", label: "Danh sách trường" },
+            { to: "/chatbot", label: "Tư vấn AI" },
+            { to: "/about", label: "Về chúng tôi" },
           ].map(({ to, label }) => (
             <Link to={to} key={to}>
               <Box
@@ -53,9 +55,9 @@ export const Header = () => {
                 color={text_blue}
                 transition="all 0.3s ease"
                 _hover={{
-                  bg: 'gray.100',
-                  transform: 'translateY(-1px)',
-                  boxShadow: 'md',
+                  bg: "gray.100",
+                  transform: "translateY(-1px)",
+                  boxShadow: "md",
                 }}
               >
                 {label}
@@ -64,28 +66,43 @@ export const Header = () => {
           ))}
         </Flex>
 
-        {/* Login and Register Buttons */}
+        {/* Login and Register or Logout Buttons */}
         <Flex gap={2}>
-          <Link to="/login">
+          {isAuthenticated ? (
             <Button
               variant="outline"
               color={text_blue}
               borderColor={text_blue}
-              _hover={{ bg: 'gray.100' }}
+              _hover={{ bg: "gray.100" }}
               size="sm"
+              onClick={logout}
             >
-              Đăng nhập
+              Đăng xuất
             </Button>
-          </Link>
-          <Link to="/register">
-            <Button
-              colorScheme={text_blue}
-              size="sm"
-              _hover={{ bg: `${text_blue}.600` }}
-            >
-              Đăng ký
-            </Button>
-          </Link>
+          ) : (
+            <>
+              <Link to="/login">
+                <Button
+                  variant="outline"
+                  color={text_blue}
+                  borderColor={text_blue}
+                  _hover={{ bg: "gray.100" }}
+                  size="sm"
+                >
+                  Đăng nhập
+                </Button>
+              </Link>
+              <Link to="/register">
+                <Button
+                  colorScheme={text_blue}
+                  size="sm"
+                  _hover={{ bg: `${text_blue}.600` }}
+                >
+                  Đăng ký
+                </Button>
+              </Link>
+            </>
+          )}
         </Flex>
       </Flex>
     </Box>

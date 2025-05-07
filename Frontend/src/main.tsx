@@ -4,13 +4,15 @@ import { BrowserRouter } from 'react-router-dom';
 import { ChakraProvider } from '@chakra-ui/react';
 import { App } from './App.tsx';
 import { system } from './theme.ts';
-
+import { AuthProvider } from './context/AuthContext';
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <ChakraProvider value={system}> 
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+    <ChakraProvider value = {system}>
+      <AuthProvider> 
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </AuthProvider>
     </ChakraProvider>
   </StrictMode>
 );

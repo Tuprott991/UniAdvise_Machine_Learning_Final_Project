@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from services.auth import register_user, login_user
-from database.auth_model import RegisterRequest, LoginRequest, Token
+from models.auth_model import RegisterRequest, LoginRequest, Token
 
 router = APIRouter()
 

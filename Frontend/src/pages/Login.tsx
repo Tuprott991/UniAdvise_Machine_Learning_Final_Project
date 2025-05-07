@@ -8,6 +8,8 @@ import {
     Text,
   } from "@chakra-ui/react";
   import { useForm } from "react-hook-form";
+  import { useAuth } from "../context/AuthContext";
+  import { useNavigate } from "react-router-dom";
   
   type LoginFormData = {
     email: string;
@@ -20,11 +22,27 @@ import {
       handleSubmit,
       formState: { errors },
     } = useForm<LoginFormData>();
+    const { login } = useAuth();
+    const navigate = useNavigate();
   
-    const onSubmit = (data: LoginFormData) => {
-      // Placeholder for API call
-      console.log("Login data:", data);
-      // Replace with: fetch('/api/login', { method: 'POST', body: JSON.stringify(data) })
+    const onSubmit = async (data: LoginFormData) => {
+      try {
+        const response = await fetch("/api/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+        const result = await response.json();
+        if (response.ok) {
+          login(result.token); // Giả định API trả về token
+          navigate("/"); // Điều hướng về trang chủ
+        } else {
+          alert(result.message || "Đăng nhập thất bại!");
+        }
+      } catch (error) {
+        console.error("Error during login:", error);
+        alert("Có lỗi xảy ra, vui lòng thử lại!");
+      }
     };
   
     return (

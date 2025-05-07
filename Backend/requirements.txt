@@ -1,0 +1,17 @@
+langchain==0.3.7
+langchain-openai==0.2.9
+psycopg
+pydantic
+python-dotenv==1.0.1
+fastapi
+uvicorn
+python-multipart
+"psycopg[binary,pool]"
+pipmaster
+bcrypt
+pyjwt
+bcrypt
+httptools
+langchain_community
+peft 
+trl
