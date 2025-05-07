@@ -1,6 +1,6 @@
 from database.uni_info_db import get_all_universities, get_university_sections_id
 
-def all_universities_json ():
+def all_universities_json():
     """
     Lấy thông tin tất cả các trường đại học từ database và chuyển đổi thành định dạng JSON.
     """
@@ -8,8 +8,8 @@ def all_universities_json ():
     universities_json = []
     for university in universities:
         university_json = {
-            "id": university[0],
-            "name": university[1]
+            "id": university["id"],
+            "name": university["name"]
         }
         universities_json.append(university_json)
     return universities_json
@@ -44,5 +44,5 @@ def format_university_sections(university_id: int):
             result[title] = content
     return result
 
-
+# print(all_universities_json())
 
