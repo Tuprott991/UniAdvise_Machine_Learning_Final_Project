@@ -48,7 +48,7 @@ def register_user(user: RegisterRequest) -> Token:
     hashed_password = hash_password(user.password)
 
     # Lưu người dùng vào cơ sở dữ liệu
-    saved_user = save_user_info(user.email, hashed_password, user.fullname, user.nickname, user.gender, user.country, user.address, user.phone, 0.0, 0.0)
+    saved_user = save_user_info(user.email, hashed_password, user.fullname, user.gender)
     # Tạo và trả về token
     access_token = create_access_token(data={"sub": saved_user["email"]})
     return Token(access_token=access_token)
