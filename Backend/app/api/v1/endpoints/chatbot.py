@@ -22,6 +22,9 @@ class ChatRequest(BaseModel):
 class ChatResponse(BaseModel):
     answer: str
 
+class ThreadRequest(BaseModel):
+    user_id: int
+
 
 @router.post("/chatt")
 async def chat(request: ChatRequest):
@@ -58,7 +61,7 @@ async def chat_stream(request: ChatRequest):
         media_type="text/event-stream"
     ) 
 
-@router.get("/chat/all_history")
+@router.get("/chat/all_history/{user_id}")
 def get_all_chat_threads_id(user_id: int):
     """
     Lấy danh sách các thread chat của người dùng
@@ -88,12 +91,13 @@ def get_chat_history(user_id: int, thread_id: str):
         raise HTTPException(status_code=500, detail=str(e))
     
 @router.post("/chat/create")
-def create_chat_thread(user_id: int):
+def create_chat_thread(request: ThreadRequest):
     """
     Tạo một thread chat mới cho người dùng
     """
     try:
-        thread_id = create_thread_id_for_user(user_id)
+        print(request.user_id)
+        thread_id = create_thread_id_for_user(request.user_id)
         if not thread_id:
             raise HTTPException(status_code=500, detail="Failed to create chat thread")
         return {"thread_id": thread_id}

@@ -11,6 +11,7 @@ from lightrag.llm.openai import openai_embed
 # from lightrag.llm.ollama import ollama_embedding
 from lightrag.utils import EmbeddingFunc
 from lightrag.kg.shared_storage import initialize_pipeline_status
+import asyncio
 
 load_dotenv()
 
@@ -54,9 +55,12 @@ async def initialize_rag():
 
     return rag
 
-# 
+rag = None
 
-rag = asyncio.run(initialize_rag())
+async def initialize_rag_instance():
+    global rag
+    if rag is None:
+        rag = await initialize_rag()
 
 async def query_rag(query: str, mode: str = "naive", only_need_context: bool = True):
     """
@@ -71,9 +75,11 @@ async def query_rag(query: str, mode: str = "naive", only_need_context: bool = T
     Returns:
         dict: The result of the query.
     """
+    print("It's work")
+    await initialize_rag_instance()
     result = await rag.aquery(
             query=query,
-            param=QueryParam(mode=mode, only_need_context=only_need_context),
+            param=QueryParam(mode=mode, only_need_context=only_need_context, top_k=23),
         )
     return result
 

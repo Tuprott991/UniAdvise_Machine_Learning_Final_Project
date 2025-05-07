@@ -20,7 +20,7 @@ if not OPENAI_API_KEY:
 
 
 # Create tools
-get_info_tool = GetInfoTool
+get_info_tool = GetInfoTool()
 # create_quiz_tool = CreateQuizTool()
 # create_study_guide_tool = CreateStudyGuideTool()
 # create_exam_tool = CreateExamTool()
@@ -61,13 +61,13 @@ def get_llm_and_agent() -> AgentExecutor:  # Phần prompt này nên làm riêng
     Nếu như người dùng hỏi về các vấn đề khác, bạn hãy trả lời theo cách thông thường mà không cần sử dụng công cụ nào cả.
 
     Quan trọng: Bạn không được phép đưa ra bất kỳ thông tin nào mà bạn không chắc chắn hoặc không có trong cơ sở dữ liệu.
-    
+
 """
 
     chat = ChatOpenAI(
         temperature=0, 
         streaming=True, 
-        model="gpt-4o", 
+        model="gpt-4o-mini", 
         api_key=OPENAI_API_KEY, 
         callbacks=[CustomHandler()]
     )   

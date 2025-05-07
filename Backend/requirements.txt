@@ -15,4 +15,5 @@ httptools
 langchain_community
 peft 
 trl
+ligtrag-hku
 # flash-attn --no-build-isolation

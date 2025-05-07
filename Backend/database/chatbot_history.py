@@ -4,7 +4,7 @@ from psycopg.rows import dict_row
 from datetime import datetime
 from typing import List, Dict
 from database import get_db_connection
-from uuid import UUID
+from uuid import uuid4
 
 def init_chat_history_table():
     """
@@ -43,7 +43,8 @@ def create_thread_id_for_user(user_id: int) -> str:
     """
     Tạo một ID cuộc trò chuyện mới bằng cách sử dụng UUID
     """
-    thread_id = str(UUID(int=UUID().int, version=4))
+    thread_id = str(uuid4())
+    print(f"Generated thread ID: {thread_id}")
 
     with get_db_connection() as conn:
         with conn.cursor() as cur:
