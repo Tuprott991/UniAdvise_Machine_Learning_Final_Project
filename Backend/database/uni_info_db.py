@@ -5,7 +5,6 @@ from database import get_db_connection
 from uuid import UUID
 
 
-
 def get_all_universities() :
     """
     Lấy thông tin tất cả các trường đại học từ database.
