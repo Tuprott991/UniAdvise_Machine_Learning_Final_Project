@@ -73,7 +73,7 @@ def main():
 
     # Training arguments
     training_args = TrainingArguments(
-        per_device_train_batch_size=12,
+        per_device_train_batch_size=6,
         gradient_accumulation_steps=2,
         learning_rate=4e-5,
         num_train_epochs=2,
