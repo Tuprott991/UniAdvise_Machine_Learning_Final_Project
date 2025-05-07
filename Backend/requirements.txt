@@ -15,3 +15,4 @@ httptools
 langchain_community
 peft 
 trl
+flash-attn --no-build-isolation

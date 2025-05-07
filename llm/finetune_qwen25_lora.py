@@ -31,9 +31,18 @@ def compute_perplexity(model, tokenizer, prompt, answer):
 
 
 def main():
-    model_name = "Qwen/Qwen2.5-3B-Instruct"
+    # Qwen/Qwen2.5-3B-Instruct 
+    
+    # model_name = "Qwen/Qwen2.5-3B-Instruct"
+    # data_path = "vi_uni_dataset.jsonl"
+    # output_dir = "./qwen2.5-3b-lora-ft"
+
+    # Qwen/Qwen2.5-7B-Instruct 
+
+    model_name = "Qwen/Qwen2.5-7B-Instruct"
     data_path = "vi_uni_dataset.jsonl"
-    output_dir = "./qwen2.5-3b-lora-ft"
+    output_dir = "./qwen2.5-7b-lora-ft"
+
 
     # Load tokenizer and model
     tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
@@ -66,7 +75,7 @@ def main():
     training_args = TrainingArguments(
         per_device_train_batch_size=12,
         gradient_accumulation_steps=2,
-        learning_rate=2e-5,
+        learning_rate=4e-5,
         num_train_epochs=2,
         warmup_steps=50,
         logging_steps=10,
