@@ -23,7 +23,7 @@ class ChatResponse(BaseModel):
     answer: str
 
 class ThreadRequest(BaseModel):
-    token: str
+    user_id: str
 
 
 @router.post("/chatt")
