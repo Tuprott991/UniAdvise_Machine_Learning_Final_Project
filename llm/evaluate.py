@@ -9,6 +9,7 @@ import torch
 nltk.download("punkt")
 import os
 os.environ["NLTK_DATA"] = "/root/nltk_data"  
+nltk.download('punkt_tab')
 
 # === Hàm đánh giá BLEU và ROUGE ===
 def compute_bleu(reference: str, hypothesis: str) -> float:
