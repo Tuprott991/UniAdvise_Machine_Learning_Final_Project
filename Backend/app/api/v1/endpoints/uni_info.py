@@ -15,8 +15,9 @@ def get_universities():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@router.get("/universities/{university_id}", response_model=dict) 
+@router.get("/universities/{university_id}",response_model=list[dict]) 
 def get_university_info(university_id: int):
+    print("ID trường đại học:", university_id)
     """
     Lấy thông tin chi tiết của trường đại học theo id.
     """
