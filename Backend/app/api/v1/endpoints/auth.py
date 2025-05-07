@@ -17,3 +17,4 @@ def login(user: LoginRequest):
     if not token:
         raise HTTPException(status_code=401, detail="Invalid credentials")
     return token
+

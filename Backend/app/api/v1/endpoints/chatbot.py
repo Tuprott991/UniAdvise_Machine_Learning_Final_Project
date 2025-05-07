@@ -4,6 +4,7 @@ from fastapi import APIRouter, HTTPException
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 from services.chatbot_services import get_answer, get_answer_stream
+from database.chatbot_history import get_recent_chat_history
 import logging
 import json
 from typing import AsyncGenerator, Dict
@@ -56,4 +57,17 @@ async def chat_stream(request: ChatRequest):
         event_generator(request.course_name, request.question, request.thread_id, request.course_id),
         media_type="text/event-stream"
     ) 
-        
+
+@router.get("/chat/history/{thread_id}")
+def get_chat_history(thread_id: str):
+    """
+    Lấy lịch sử chat gần đây của một cuộc trò chuyện
+    """
+    try:
+        history = get_recent_chat_history(thread_id)
+        if not history:
+            raise HTTPException(status_code=404, detail="No chat history found")
+        return history
+    except Exception as e:
+        logger.error(f"Error fetching chat history: {str(e)}", exc_info=True)
+        raise HTTPException(status_code=500, detail=str(e))

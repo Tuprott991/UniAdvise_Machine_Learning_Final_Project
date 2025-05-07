@@ -30,7 +30,7 @@ def append_thread(user_id: int, thread_id: str) -> Dict:
         with conn.cursor() as cur:
             cur.execute(
                 """
-                UPDATE User
+                UPDATE user_info
                 SET threads = array_append(threads, %s)
                 WHERE id = %s
                 RETURNING *;
@@ -56,5 +56,19 @@ def save_user_info(email: str, password:str, fullname: str, gender: str) -> Dict
             result = cur.fetchone()
         conn.commit()
         return result
+
+def get_user_info_by_email(email: str) -> Dict:
+    """Get user information by email"""
+    with get_db_connection() as conn:
+        with conn.cursor() as cur:
+            cur.execute(
+                """
+                SELECT * FROM user_info WHERE email = %s
+                """,
+                (email,)
+            )
+            result = cur.fetchone()
+        return result
+
 
 init_user_info()
