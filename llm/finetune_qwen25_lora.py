@@ -10,15 +10,16 @@ from peft import LoraConfig, get_peft_model, TaskType
 from trl import SFTTrainer, DataCollatorForCompletionOnlyLM
 
 
-def format_chat_example(example):
+def format_chat_example(example, tokenizer):
     messages = example["messages"]
     user = next((m["content"] for m in messages if m["role"] == "user"), "")
     assistant = next((m["content"] for m in messages if m["role"] == "assistant"), "")
+    input_text = f"<|im_start|>user\n{user}<|im_end|>\n<|im_start|>assistant\n"
+    response = assistant + "<|im_end|>"
     return {
-        "prompt": f"<|im_start|>user\n{user}<|im_end|>\n<|im_start|>assistant\n",
-        "response": assistant + "<|im_end|>"
+        "input_ids": tokenizer(input_text, return_tensors="pt")["input_ids"].squeeze(0),
+        "labels": tokenizer(response, return_tensors="pt")["input_ids"].squeeze(0)
     }
-
 
 def compute_perplexity(model, tokenizer, prompt, answer):
     input_text = prompt + answer
@@ -58,7 +59,7 @@ def main():
 
     # Load and format dataset
     dataset = load_dataset("json", data_files=data_path)["train"]
-    formatted_dataset = dataset.map(format_chat_example)
+    formatted_dataset = dataset.map(lambda x: format_chat_example(x, tokenizer))
 
     # Training arguments
     training_args = TrainingArguments(
