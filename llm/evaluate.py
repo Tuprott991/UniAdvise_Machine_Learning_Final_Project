@@ -7,6 +7,8 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 import torch
 
 nltk.download("punkt")
+import os
+os.environ["NLTK_DATA"] = "/root/nltk_data"  
 
 # === Hàm đánh giá BLEU và ROUGE ===
 def compute_bleu(reference: str, hypothesis: str) -> float:
