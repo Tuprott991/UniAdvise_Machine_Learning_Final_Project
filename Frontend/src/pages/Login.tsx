@@ -9,7 +9,7 @@ import {
   } from "@chakra-ui/react";
   import { useForm } from "react-hook-form";
   import { useAuth } from "../context/AuthContext";
-  import { useNavigate } from "react-router-dom";
+  import { useNavigate, Link } from "react-router-dom";
   
   type LoginFormData = {
     email: string;
@@ -101,10 +101,12 @@ import {
             </form>
             <Text textAlign="center" fontSize="sm">
               Chưa có tài khoản?{" "}
-              <Text as="span" color="blue.500">
-                Đăng ký
-              </Text>
-            </Text>
+              <Link to="/register">
+                <Text as="span" color="blue.500" fontWeight="medium" _hover={{ textDecoration: "underline" }}>
+                  Đăng ký ngay
+                </Text>
+              </Link>
+          </Text>
           </Stack>
         </Container>
       </Box>
