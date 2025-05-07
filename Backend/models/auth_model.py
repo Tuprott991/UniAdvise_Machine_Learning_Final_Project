@@ -7,9 +7,6 @@ class RegisterRequest(BaseModel):
     fullname: Optional[str] = None
     nickname: Optional[str] = None
     gender: Optional[str] = None
-    country: Optional[str] = None
-    address: Optional[str] = None
-    phone: Optional[str] = None
 
 class LoginRequest(BaseModel):
     email: str

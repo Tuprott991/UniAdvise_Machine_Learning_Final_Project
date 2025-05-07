@@ -64,7 +64,7 @@ def save_chat_history(user_id: int, thread_id: str, question: str, answer: str) 
             # Step 2: Append the message_id into the course's threads list
             cur.execute(
                 """
-                UPDATE User
+                UPDATE user_info
                 SET threads = CASE
                     WHEN %s = ANY(threads) THEN threads
                     ELSE array_append(threads, %s)

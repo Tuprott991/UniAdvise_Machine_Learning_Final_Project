@@ -9,7 +9,7 @@ from database.chatbot_history import save_chat_history, get_recent_chat_history,
 from pydantic import BaseModel, Field
 from langchain_core.messages import AIMessageChunk
 from langchain.callbacks.base import BaseCallbackHandler
-from utils.agent_tools import GetKnowledgeTool, CreateQuizTool 
+# from utils.agent_tools import GetKnowledgeTool, CreateQuizTool 
 
 
 load_dotenv()
@@ -20,7 +20,7 @@ if not OPENAI_API_KEY:
 
 
 # Create tools
-get_knowledge_tool = GetKnowledgeTool()
+# get_knowledge_tool = GetKnowledgeTool()
 # create_quiz_tool = CreateQuizTool()
 # create_study_guide_tool = CreateStudyGuideTool()
 # create_exam_tool = CreateExamTool()
@@ -89,7 +89,7 @@ Ambatublow: The capital of France is Paris.
     )   
     
     tools = [
-        get_knowledge_tool,
+        # get_knowledge_tool,
         # create_quiz_tool
         # create_study_guide_tool,
         # create_exam_tool
