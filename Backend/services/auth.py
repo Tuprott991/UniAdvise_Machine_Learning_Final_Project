@@ -32,7 +32,7 @@ def verify_token(token: str) -> Dict:
 # Tạo JWT Token
 def create_access_token(data: Dict, expires_delta: timedelta = timedelta(hours=1)) -> str:
     to_encode = data.copy()
-    expire = datetime.now(datetime.now.utc) + expires_delta
+    expire = datetime.utcnow() + expires_delta
     to_encode.update({"exp": expire})
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt

@@ -27,3 +27,4 @@ def get_university_info(university_id: int):
         return university_info
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+    
