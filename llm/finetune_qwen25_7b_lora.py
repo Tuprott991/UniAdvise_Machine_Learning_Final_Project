@@ -109,6 +109,11 @@ def main():
 
     trainer.train()
 
+    
+    # Save fine-tuned model and tokenizer
+    model.save_pretrained(output_dir)
+    tokenizer.save_pretrained(output_dir)
+
     # Evaluate on some samples
     print("\n🔎 Perplexity Evaluation on 10 Samples after fine-tuned:")
     for i in range(10):
@@ -118,13 +123,6 @@ def main():
         ppl = compute_perplexity(model, tokenizer, prompt, response)
         print(f"Sample {i+1} - PPL: {ppl:.2f}")
     
-    # Merge LoRA weights with the base model
-    model = model.merge_and_unload()
-
-    # Save fine-tuned model and tokenizer
-    model.save_pretrained(output_dir)
-    tokenizer.save_pretrained(output_dir)
-
 
 if __name__ == "__main__":
     main()
