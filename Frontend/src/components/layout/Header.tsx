@@ -34,7 +34,7 @@ export const Header = () => {
               color={text_blue}
               display={{ base: "none", md: "block" }}
             >
-              UniGuide
+              TuyenSinhAI
             </Text>
           </Flex>
         </Link>
