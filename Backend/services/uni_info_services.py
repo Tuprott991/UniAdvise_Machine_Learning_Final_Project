@@ -16,33 +16,26 @@ def all_universities_json():
 
 def format_university_sections(university_id: int):
     """
-    Trả về dict gộp thông tin các section theo tiêu đề:
-    {
-        "id": university_id,
-        "Giới thiệu": "...",
-        "Tin Tức Mới Nhất": "...",
-        "Thông Tin Tuyển Sinh": "...",
-        "Chương Trình Đào Tạo": "...",
-        "Ngành Học & Lĩnh Vực": "..."
-    }
+    Lấy thông tin các section của trường đại học từ database và chuyển đổi thành định dạng JSON.
     """
     sections = get_university_sections_id(university_id)
-    # Chỉ giữ lại các section có tiêu đề mong muốn
-    allowed_titles = {
-        "Giới thiệu",
-        "Tin Tức Mới Nhất",
-        "Thông Tin Tuyển Sinh",
-        "Chương Trình Đào Tạo",
-        "Ngành Học & Lĩnh Vực"
-    }
-
-    result = {"id": university_id}
+    # Chuyển đổi danh sách các section thành định dạng JSON
+    sections_json = []
     for section in sections:
-        title = section["section_title"]
-        content = section["content"]
-        if title in allowed_titles:
-            result[title] = content
-    return result
+        section_json = {
+            "id": section["university_id"],
+            "section": section["section_title"],
+            "content": section["content"]
+        }
+        sections_json.append(section_json)
+    return sections_json
+
+if __name__ == "__main__":
+    # Test thử với một university_id cụ thể
+    test_university_id = 1  # Thay bằng ID thực tế có trong database
+    result = format_university_sections(test_university_id)
+    print(result)
+
 
 # print(all_universities_json())
 
