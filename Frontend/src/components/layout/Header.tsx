@@ -1,7 +1,7 @@
 import { Box, Flex, Image, Text, Button } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import logo from "@assets/logo.png";
-import { text_blue } from "@styles";
+import { text_blue } from "@styles/";
 import { useAuth } from "@context/AuthContext";
 export const Header = () => {
   const { isAuthenticated, logout } = useAuth();

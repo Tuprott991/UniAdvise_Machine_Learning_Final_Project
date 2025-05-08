@@ -14,11 +14,13 @@ import {
 } from "@chakra-ui/react";
 import { UniversityCard } from "../components/university/UniversityCard";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import { getAllUniversitiesApi } from "@api/";
 
 const sortOptions = createListCollection({
   items: [
     { label: "Sắp xếp theo tên", value: "name" },
+    { label: "Sắp xếp theo điểm đầu vào", value: "admission_score" },
+    { label: "Sắp xếp theo số lượng ngành học", value: "number_of_programmes" },
   ],
 });
 
@@ -32,7 +34,7 @@ export const Universities = () => {
   useEffect(() => {
     const fetchUniversities = async () => {
       try {
-        const response = await axios.get("https://uniadvise-be-fastapi.onrender.com/api/uni_info/universities");
+        const response = await getAllUniversitiesApi();
         setUniversities(response.data);
       } catch (err: any) {
         console.error("Lỗi khi gọi API:", err);

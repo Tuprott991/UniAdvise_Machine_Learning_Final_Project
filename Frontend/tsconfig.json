@@ -23,7 +23,7 @@
         "api/index.ts",
       ],
       "@styles/*": [
-        "styles/*"
+        "styles/index.ts",
       ],
       "@assets/*": [
         "assets/*"

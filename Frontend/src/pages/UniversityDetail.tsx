@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { universityDetailsApi } from '@api/';
+import { getUniversityDetailsApi } from '@api/';
 
 export const UniversityDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -21,7 +21,7 @@ export const UniversityDetail = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const data = await universityDetailsApi(id!);
+        const data = await getUniversityDetailsApi(id!);
         const sectionMap: Record<string, string> = {};
         data.forEach((item) => {
           const key = normalizeSectionKey(item.section);

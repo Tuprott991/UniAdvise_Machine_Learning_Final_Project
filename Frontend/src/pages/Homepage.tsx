@@ -1,7 +1,7 @@
 import { Box, Container, Heading, Text, Button, Image, Stack, Grid } from '@chakra-ui/react';
 import { School, Award, Brain } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { text_blue } from '@styles';
+import { text_blue } from '@styles/';
 
 export const Homepage = () => {
   return (
