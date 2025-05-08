@@ -4,12 +4,12 @@ from models.auth_model import RegisterRequest, LoginRequest, Token
 
 router = APIRouter()
 
-@router.post("/register", response_model=Token)
+@router.post("/register")
 def register(user: RegisterRequest):
-    token = register_user(user)
-    if not token:
+    user_id = register_user(user)
+    if not user_id:
         raise HTTPException(status_code=400, detail="Registration failed")
-    return token
+    return user_id
 
 @router.post("/login")
 def login(user: LoginRequest):

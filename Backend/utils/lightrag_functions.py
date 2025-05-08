@@ -79,7 +79,7 @@ async def query_rag(query: str, mode: str = "naive", only_need_context: bool = T
     await initialize_rag_instance()
     result = await rag.aquery(
             query=query,
-            param=QueryParam(mode=mode, only_need_context=only_need_context, top_k=23),
+            param=QueryParam(mode="hybrid", only_need_context=only_need_context, top_k=23),
         )
     return result
 

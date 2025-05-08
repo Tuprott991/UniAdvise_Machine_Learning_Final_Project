@@ -41,7 +41,6 @@ def create_access_token(data: Dict, expires_delta: timedelta = timedelta(hours=1
 def register_user(user: RegisterRequest) -> Token:
     # Kiểm tra xem email đã tồn tại chưa
     existing_user = get_user_info_by_email(user.email)
-    user_id = get_user_info_by_email(user.email)["id"]
     
     if existing_user:
         raise HTTPException(status_code=400, detail="Email already registered")
@@ -51,9 +50,11 @@ def register_user(user: RegisterRequest) -> Token:
 
     # Lưu người dùng vào cơ sở dữ liệu
     saved_user = save_user_info(user.email, hashed_password, user.fullname, user.gender)
+
+    user_id = saved_user["id"]
     # Tạo và trả về token
-    access_token = create_access_token(data={"sub": saved_user["email"]})
-    return Token(access_token=access_token, user_id=user_id)
+    # access_token = create_access_token(data={"sub": saved_user["email"]})
+    return user_id
 
 # Hàm đăng nhập người dùng
 def login_user(user: LoginRequest) -> int:
