@@ -10,13 +10,7 @@ import {
 } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
-
-interface UniversitySection {
-  id: number;
-  section: string;
-  content: string;
-}
+import { universityDetailsApi } from '@api/';
 
 export const UniversityDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -25,19 +19,14 @@ export const UniversityDetail = () => {
   const [activeTab, setActiveTab] = useState('introduction');
 
   useEffect(() => {
-    const fetchUniversity = async () => {
+    const getData = async () => {
       try {
-        const res = await axios.get<UniversitySection[]>(
-          `https://uniadvise-be-fastapi.onrender.com/api/uni_info/universities/${id}`
-        );
-        console.log(res);
-        // Convert list of sections into a dictionary
+        const data = await universityDetailsApi(id!);
         const sectionMap: Record<string, string> = {};
-        res.data.forEach((item) => {
+        data.forEach((item) => {
           const key = normalizeSectionKey(item.section);
           sectionMap[key] = item.content;
         });
-
         setSections(sectionMap);
       } catch (error) {
         console.error('Failed to fetch university:', error);
@@ -47,7 +36,7 @@ export const UniversityDetail = () => {
       }
     };
 
-    fetchUniversity();
+    getData();
   }, [id]);
 
   const normalizeSectionKey = (label: string): string => {

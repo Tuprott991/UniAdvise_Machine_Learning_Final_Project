@@ -19,8 +19,8 @@
     "strict": true,
     "baseUrl": "./src",
     "paths": {
-      "@styles": [
-        "styles/index.ts"
+      "@api/*": [
+        "api/index.ts",
       ],
       "@styles/*": [
         "styles/*"
