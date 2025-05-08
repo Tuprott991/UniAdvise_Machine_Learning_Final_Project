@@ -44,7 +44,7 @@ export const Register = () => {
       return;
     }
     try {
-      const response = await axios.post("http://localhost:8000/api/auth/register", {
+      const response = await axios.post("https://uniadvise-be-fastapi.onrender.com/api/auth/register", {
         ...data,
         isMale,
       });

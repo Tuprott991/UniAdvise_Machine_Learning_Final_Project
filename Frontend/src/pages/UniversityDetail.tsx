@@ -28,7 +28,7 @@ export const UniversityDetail = () => {
     const fetchUniversity = async () => {
       try {
         const res = await axios.get<UniversitySection[]>(
-          `http://localhost:8000/api/uni_info/universities/${id}`
+          `https://uniadvise-be-fastapi.onrender.com/api/uni_info/universities/${id}`
         );
         console.log(res);
         // Convert list of sections into a dictionary

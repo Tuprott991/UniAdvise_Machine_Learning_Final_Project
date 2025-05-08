@@ -32,7 +32,7 @@ export const Universities = () => {
   useEffect(() => {
     const fetchUniversities = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/api/uni_info/universities");
+        const response = await axios.get("https://uniadvise-be-fastapi.onrender.com/api/uni_info/universities");
         setUniversities(response.data);
       } catch (err: any) {
         console.error("Lỗi khi gọi API:", err);

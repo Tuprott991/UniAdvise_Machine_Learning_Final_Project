@@ -28,7 +28,7 @@ export const Login = () => {
 
   const onSubmit = async (data: LoginFormData) => {
     try {
-      const response = await axios.post("http://localhost:8000/api/auth/login", data);
+      const response = await axios.post("https://uniadvise-be-fastapi.onrender.com/api/auth/login", data);
       const result = response.data;
       console.log(result);
 
@@ -45,7 +45,7 @@ export const Login = () => {
   return (
     <Box minH="100vh" bg="gray.100" py={10}>
       <Container maxW="container.sm">
-        <Stack gap={8} p={6} bg FUT="white" borderRadius="lg" boxShadow="md">
+        <Stack gap={8} p={6} bg="white" borderRadius="lg" boxShadow="md">
           <Heading textAlign="center">Đăng nhập tài khoản</Heading>
           <form onSubmit={handleSubmit(onSubmit)}>
             <Stack gap={4}>
@@ -86,7 +86,7 @@ export const Login = () => {
                   placeholder="Nhập mật khẩu"
                 />
                 {errors.password && (
-                  <Text colorέρνη="red.500" fontSize="sm" mt={1}>
+                  <Text color="red.500" fontSize="sm" mt={1}>
                     {errors.password.message}
                   </Text>
                 )}

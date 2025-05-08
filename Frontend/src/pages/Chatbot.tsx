@@ -20,7 +20,7 @@ interface ChatSession {
 
 // Tạo instance của axios với cấu hình mặc định
 const api = axios.create({
-  baseURL: 'http://localhost:8000/api/chatbot',
+  baseURL: 'https://uniadvise-be-fastapi.onrender.com/api/chatbot',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -59,11 +59,12 @@ export const Chatbot = () => {
       console.log('Chat history:', res.data.threads);
       // res.data.threads là một mảng các thread id
 
-      const threads = res.data.threads.map((thread: any) => ({
-        id: thread.threads.thread_id,
-        title: thread.title || `Cuộc trò chuyện ${thread.threads.thread_id}`,
+      const threads = res.data.threads.map((thread: string) => ({
+        id: thread,
+        title: `Cuộc trò chuyện ${thread}`, // Tạo tiêu đề mặc định dựa trên thread_id
         messages: [], // Sẽ được tải khi chọn session
       }));
+  
       setHistory(threads.sort((a: ChatSession, b: ChatSession) => Number(b.id) - Number(a.id)));
       return threads;
     } catch (err) {
@@ -80,14 +81,17 @@ export const Chatbot = () => {
       const res = await api.get(`/chat/history/${thread_id}`, {
         params: { user_id },
       });
+  
       const formattedHistory = res.data.history;
-      // Chuyển đổi formatted_history thành ChatMessage[]
+  
+      // Chuyển đổi formattedHistory thành ChatMessage[]
       const sessionMessages: ChatMessage[] = formattedHistory.map((msg: any, index: number) => ({
         id: `${thread_id}-${index}`,
         content: msg.content,
-        sender: msg.role === 'user' ? 'user' : 'bot',
+        sender: msg.role === 'human' ? 'user' : 'bot', // Đồng bộ giá trị sender
         timestamp: new Date(msg.timestamp || Date.now()),
       }));
+  
       return sessionMessages;
     } catch (err) {
       console.error('Error fetching session messages:', err);
@@ -137,60 +141,91 @@ export const Chatbot = () => {
 
   const handleSend = async () => {
     if (!input.trim() || !currentSessionId) return;
-
+  
     const userMessage: ChatMessage = {
       id: Date.now().toString(),
       content: input,
       sender: 'user',
       timestamp: new Date(),
     };
-
+  
     setMessages((prev) => [...prev, userMessage]);
     setInput('');
-
+  
     try {
-      const eventSource = new EventSource(
-        `http://localhost:8000/api/chatbot/chat/stream?user_id=${user_id}&question=${encodeURIComponent(input)}&thread_id=${currentSessionId}`
-      );
-
+      const response = await fetch(`https://uniadvise-be-fastapi.onrender.com/api/chatbot/chat/stream`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${user_id}`,
+        },
+        body: JSON.stringify({
+          user_id: user_id,
+          question: input,
+          thread_id: currentSessionId,
+        }),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+  
+      const reader = response.body?.getReader();
+      if (!reader) {
+        throw new Error('Response body is null');
+      }
+      const decoder = new TextDecoder();
+  
       let botResponse = '';
-      eventSource.onmessage = (event) => {
-        const data = JSON.parse(event.data);
-        if (data.content) {
-          botResponse += data.content;
-          setMessages((prev) => {
-            const lastMessage = prev[prev.length - 1];
-            if (lastMessage.sender === 'bot') {
-              return [
-                ...prev.slice(0, -1),
-                { ...lastMessage, content: botResponse },
-              ];
+  
+      while (true) {
+        const { value, done } = await reader.read();
+        if (done) break;
+  
+        const chunk = decoder.decode(value);
+        const lines = chunk
+          .split('\n')
+          .filter((line) => line.trim() !== '' && line.startsWith('data: '));
+  
+        for (const line of lines) {
+          try {
+            const jsonStr = line.replace('data: ', '');
+            const json = JSON.parse(jsonStr);
+  
+            if (json.error) {
+              setError(json.error);
+              return;
             }
-            return [
-              ...prev,
-              {
-                id: (Date.now() + 1).toString(),
-                content: botResponse,
-                sender: 'bot',
-                timestamp: new Date(),
-              },
-            ];
-          });
+  
+            if (json.content) {
+              botResponse += json.content;
+  
+              setMessages((prev) => {
+                const lastMessage = prev[prev.length - 1];
+                if (lastMessage.sender === 'bot') {
+                  return [
+                    ...prev.slice(0, -1),
+                    { ...lastMessage, content: botResponse },
+                  ];
+                }
+                return [
+                  ...prev,
+                  {
+                    id: (Date.now() + 1).toString(),
+                    content: botResponse,
+                    sender: 'bot',
+                    timestamp: new Date(),
+                  },
+                ];
+              });
+            }
+          } catch (e) {
+            console.error('Error parsing SSE message:', e);
+          }
         }
-        if (data.error) {
-          setError(data.error);
-          eventSource.close();
-        }
-      };
-
-      eventSource.onerror = () => {
-        eventSource.close();
-        if (!botResponse) {
-          setError('Không thể nhận phản hồi từ chatbot.');
-        }
-      };
-    } catch (err) {
-      console.error('Error streaming response:', err);
+      }
+    } catch (error) {
+      console.error('Stream error:', error);
       setError('Không thể gửi câu hỏi.');
     }
   };
