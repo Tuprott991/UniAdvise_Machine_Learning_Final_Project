@@ -12,7 +12,9 @@
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
-    "types": ["node"],
+    "types": [
+      "node"
+    ],
     "jsx": "react-jsx",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -106,6 +108,7 @@
       "@context/*": [
         "context/*"
       ],
+      "@routes/*": ["./routes/*"]
     }
   }
 }

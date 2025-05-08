@@ -10,19 +10,21 @@ import {
   Select,
   createListCollection,
   Spinner,
-  Text
+  Text,
+  Button,
+  HStack,
 } from "@chakra-ui/react";
 import { UniversityCard } from "../components/university/UniversityCard";
 import { useEffect, useState } from "react";
-import { getAllUniversitiesApi } from "@api/";
+import axios from "axios";
 
 const sortOptions = createListCollection({
   items: [
     { label: "Sắp xếp theo tên", value: "name" },
-    { label: "Sắp xếp theo điểm đầu vào", value: "admission_score" },
-    { label: "Sắp xếp theo số lượng ngành học", value: "number_of_programmes" },
   ],
 });
+
+const ITEMS_PER_PAGE = 9;
 
 export const Universities = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -30,11 +32,12 @@ export const Universities = () => {
   const [universities, setUniversities] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     const fetchUniversities = async () => {
       try {
-        const response = await getAllUniversitiesApi();
+        const response = await axios.get("https://uniadvise-be-fastapi.onrender.com/api/uni_info/universities");
         setUniversities(response.data);
       } catch (err: any) {
         console.error("Lỗi khi gọi API:", err);
@@ -56,6 +59,20 @@ export const Universities = () => {
       return 0;
     });
 
+  // Pagination logic
+  const totalPages = Math.ceil(filteredUniversities.length / ITEMS_PER_PAGE);
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const currentUniversities = filteredUniversities.slice(
+    startIndex,
+    startIndex + ITEMS_PER_PAGE
+  );
+
+  const handlePageChange = (newPage: number) => {
+    if (newPage >= 1 && newPage <= totalPages) {
+      setCurrentPage(newPage);
+    }
+  };
+
   return (
     <Box py={8}>
       <Container maxW="1200px">
@@ -65,7 +82,10 @@ export const Universities = () => {
           <Input
             placeholder="Tìm kiếm theo tên trường"
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={(e) => {
+              setSearchTerm(e.target.value);
+              setCurrentPage(1); // Reset về trang đầu khi tìm kiếm
+            }}
           />
 
           <Select.Root
@@ -102,11 +122,32 @@ export const Universities = () => {
         ) : error ? (
           <Text color="red.500">{error}</Text>
         ) : (
-          <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap={8}>
-            {filteredUniversities.map((university) => (
-              <UniversityCard key={university.id} university={university} />
-            ))}
-          </SimpleGrid>
+          <>
+            <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap={8}>
+              {currentUniversities.map((university) => (
+                <UniversityCard key={university.id} university={university} />
+              ))}
+            </SimpleGrid>
+
+            {/* Pagination controls */}
+            <HStack justify="center" mt={8}>
+              <Button
+                onClick={() => handlePageChange(currentPage - 1)}
+                disabled={currentPage === 1}
+              >
+                Trước
+              </Button>
+              <Text>
+                Trang {currentPage} / {totalPages}
+              </Text>
+              <Button
+                onClick={() => handlePageChange(currentPage + 1)}
+                disabled={currentPage === totalPages}
+              >
+                Tiếp
+              </Button>
+            </HStack>
+          </>
         )}
       </Container>
     </Box>
