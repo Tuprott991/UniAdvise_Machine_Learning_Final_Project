@@ -5,7 +5,7 @@ import { text_blue } from '@styles/';
 
 export const Homepage = () => {
   return (
-    <Box>
+    <Box userSelect={'none'}>
       <Box bg="gray.100" color="black" minH="90vh" display="flex" alignItems="center">
         <Container maxW="1200px">
           <Grid templateColumns={{ base: '1fr', lg: '1fr 1fr' }} gap={12} alignItems="center">
