@@ -11,7 +11,7 @@ def all_universities_json():
             "id": university["id"],
             "name": university["name"]
         }
-        universities_json.append(university_json)
+        universities_json.append(university_json)   
 
     return universities_json
 

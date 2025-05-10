@@ -1,5 +1,7 @@
 # University Advisory AI Project  
 
+![Home Page](data/homepage.png)
+
 ## Project Overview  
 This project creates an AI-powered university advisory system for Vietnamese higher education institutions. It leverages web crawling technologies to collect comprehensive data from universities nationwide, processes this information, and offers personalized educational guidance through an interactive AI agent.  
 
