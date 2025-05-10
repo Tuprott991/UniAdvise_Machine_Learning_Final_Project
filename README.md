@@ -15,9 +15,9 @@ This project creates an AI-powered university advisory system for Vietnamese hig
 ### Backend (Python - FastAPI)  
 - **Database**: PostgreSQL hosted on cloud platforms (Azure/AWS)  
 - **AI Components**:  
-  - Gwen 2 8B model fine-tuned with QLora  
+  - Gwen2.5-7B-Instrct model fine-tuned with Lora  
   - vLLM deployment on GPU server  
-  - RAG implementation (custom or lightRAG)  
+  - RAG implementation (lightRAG for fast and high accuracy)  
   - LangChain for agent construction  
   - Crawl4AI integration with Serper for data discovery and extraction  
 
