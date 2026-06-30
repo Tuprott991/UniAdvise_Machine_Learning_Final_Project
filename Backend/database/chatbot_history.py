@@ -6,6 +6,8 @@ from typing import List, Dict
 from database import get_db_connection
 from uuid import uuid4
 
+_chat_history_initialized = False
+
 def init_chat_history_table():
     """
     Khởi tạo bảng message trong database nếu chưa tồn tại
@@ -18,13 +20,10 @@ def init_chat_history_table():
     """
     with get_db_connection() as conn:
         with conn.cursor() as cur:
-            # Enable UUID extension if not exists
-            cur.execute("CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\"")
-            
             # Create table if not exists
             cur.execute("""
                 CREATE TABLE IF NOT EXISTS message (
-                    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+                    id UUID PRIMARY KEY,
                     thread_id VARCHAR(255) NOT NULL, 
                     question TEXT NOT NULL,
                     answer TEXT NOT NULL,
@@ -39,6 +38,13 @@ def init_chat_history_table():
             """)
         conn.commit()
 
+def ensure_chat_history_table():
+    global _chat_history_initialized
+    if _chat_history_initialized:
+        return
+    init_chat_history_table()
+    _chat_history_initialized = True
+
 def create_thread_id_for_user(user_id: int) -> str:
     """
     Tạo một ID cuộc trò chuyện mới bằng cách sử dụng UUID
@@ -46,6 +52,7 @@ def create_thread_id_for_user(user_id: int) -> str:
     thread_id = str(uuid4())
     print(f"Generated thread ID: {thread_id}")
 
+    ensure_chat_history_table()
     with get_db_connection() as conn:
         with conn.cursor() as cur:
             # Step 1: Insert the new thread_id into user_info table
@@ -72,6 +79,7 @@ def get_thread_id_for_user(user_id: int) -> List[str]:
     Returns:
         List[str]: Danh sách các ID cuộc trò chuyện
     """
+    ensure_chat_history_table()
     with get_db_connection() as conn:
         with conn.cursor() as cur:
             cur.execute(
@@ -99,12 +107,13 @@ def save_chat_history(user_id: int, thread_id: str, question: str, answer: str) 
     Returns:
         Dict: Thông tin lịch sử chat vừa được lưu
     """
+    ensure_chat_history_table()
     with get_db_connection() as conn:
         with conn.cursor() as cur:
             # Step 1: Insert the chat history into the 'message' table
             cur.execute(
-                "INSERT INTO message (thread_id, question, answer) VALUES (%s, %s, %s) RETURNING id::text",
-                (thread_id, question, answer)
+                "INSERT INTO message (id, thread_id, question, answer) VALUES (%s, %s, %s, %s) RETURNING id::text",
+                (uuid4(), thread_id, question, answer)
             )
 
             result = cur.fetchone()
@@ -138,6 +147,7 @@ def get_recent_chat_history(thread_id: str, limit: int = 10) -> List[Dict]:
     Returns:
         List[Dict]: Danh sách các tin nhắn gần đây
     """
+    ensure_chat_history_table()
     with get_db_connection() as conn:
         with conn.cursor() as cur:
             cur.execute(
@@ -174,6 +184,3 @@ def format_chat_history(chat_history: List[Dict]) -> str:
             {"role": "assistant", "content": msg["answer"]}
         ])
     return formatted_history
-
-# Initialize table when module is imported
-init_chat_history_table() 

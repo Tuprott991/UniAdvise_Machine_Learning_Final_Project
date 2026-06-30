@@ -12,6 +12,7 @@ import { useAuth } from "../context/AuthContext";
 import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../api/axiosClient";
 
 
 type RegisterFormData = {
@@ -19,7 +20,6 @@ type RegisterFormData = {
   email: string;
   password: string;
   confirmPassword: string;
-  isMale?: boolean; // Boolean để biểu thị giới tính
 };
 
 export const Register = () => {
@@ -44,9 +44,11 @@ export const Register = () => {
       return;
     }
     try {
-      const response = await axios.post("https://uniadvise-be-fastapi.onrender.com/api/auth/register", {
-        ...data,
-        isMale,
+      const response = await axios.post(`${API_BASE_URL}/auth/register`, {
+        email: data.email,
+        password: data.password,
+        fullname: data.fullName,
+        gender: isMale ? "Nam" : "Nữ",
       });
     
       const result = response.data;
@@ -57,7 +59,7 @@ export const Register = () => {
     } catch (error: any) {
       console.error("Lỗi khi đăng ký:", error);
       const errorMessage =
-        error.response?.data?.message || "Có lỗi xảy ra, vui lòng thử lại!";
+        error.response?.data?.detail || error.response?.data?.message || "Có lỗi xảy ra, vui lòng thử lại!";
       alert(errorMessage);
     }
   };
@@ -159,6 +161,7 @@ export const Register = () => {
                 </Text>
                 <Stack direction="row" gap={4}>
                   <Button
+                    type="button"
                     colorScheme={isMale === true ? "green" : "gray"}
                     variant={isMale === true ? "solid" : "outline"}
                     borderWidth={isMale === true ? "2px" : "1px"}
@@ -172,6 +175,7 @@ export const Register = () => {
                     Nam
                   </Button>
                   <Button
+                    type="button"
                     colorScheme={isMale === false ? "green" : "gray"}
                     variant={isMale === false ? "solid" : "outline"}
                     borderWidth={isMale === false ? "2px" : "1px"}

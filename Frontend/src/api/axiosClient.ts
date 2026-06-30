@@ -9,6 +9,12 @@
 
 import axios from 'axios';
 
+export const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL ||
+  (import.meta.env.PROD
+    ? 'https://uniadvise-be-fastapi.onrender.com/api'
+    : 'http://127.0.0.1:8000/api');
+
 /**
  * A pre-configured instance of Axios for making HTTP requests to the UniAdvise API.
  *
@@ -17,7 +23,7 @@ import axios from 'axios';
  * and uses `application/json` as the default `Content-Type` for all requests.
  */
 const axiosClient = axios.create({
-  baseURL: 'https://uniadvise-be-fastapi.onrender.com/api',
+  baseURL: API_BASE_URL,
   headers: {
     'Content-Type': 'application/json',
   },

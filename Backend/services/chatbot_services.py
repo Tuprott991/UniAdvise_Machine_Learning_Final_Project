@@ -73,7 +73,7 @@ def get_llm_and_agent() -> AgentExecutor:  # Phần prompt này nên làm riêng
     )   
     
     tools = [
-        get_info_tool
+
         # create_quiz_tool
         # create_study_guide_tool,
         # create_exam_tool

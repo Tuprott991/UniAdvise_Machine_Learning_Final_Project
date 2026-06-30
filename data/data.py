@@ -4,7 +4,9 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
-load_dotenv(ROOT_DIR / ".env")
+for env_path in (ROOT_DIR / "Backend" / ".env", ROOT_DIR / ".env"):
+    if env_path.exists():
+        load_dotenv(env_path, override=False)
 
 # Cấu hình kết nối PostgreSQL
 conn = psycopg2.connect(

@@ -10,7 +10,7 @@ import {
 import { useForm } from "react-hook-form";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate, Link } from "react-router-dom";
-import axios from "axios";
+import axiosClient from "../api/axiosClient";
 
 type LoginFormData = {
   email: string;
@@ -28,7 +28,7 @@ export const Login = () => {
 
   const onSubmit = async (data: LoginFormData) => {
     try {
-      const response = await axios.post("https://uniadvise-be-fastapi.onrender.com/api/auth/login", data);
+      const response = await axiosClient.post("/auth/login", data);
       const result = response.data;
       console.log(result);
 
@@ -37,7 +37,7 @@ export const Login = () => {
     } catch (error: any) {
       console.error("Lỗi khi đăng nhập:", error);
       const errorMessage =
-        error.response?.data?.message || "Đăng nhập thất bại!";
+        error.response?.data?.detail || error.response?.data?.message || "Đăng nhập thất bại!";
       alert(errorMessage);
     }
   };

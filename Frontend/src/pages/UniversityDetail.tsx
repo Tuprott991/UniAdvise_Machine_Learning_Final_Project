@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getUniversityDetailsApi } from '@api/';
+import { getUniversityDetailsApi } from '@api';
 
 export const UniversityDetail = () => {
   const { id } = useParams<{ id: string }>();

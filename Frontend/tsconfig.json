@@ -21,8 +21,11 @@
     "strict": true,
     "baseUrl": "./src",
     "paths": {
+      "@api": [
+        "api/index.ts"
+      ],
       "@api/*": [
-        "api/index.ts",
+        "api/*"
       ],
       "@styles/*": [
         "styles/index.ts",

@@ -28,10 +28,10 @@ def get_db_connection():
             password=DB_PASSWORD,
             host=DB_HOST,
             port=DB_PORT,
+            connect_timeout=10,
             row_factory=dict_row
         )
     except psycopg.Error as e:
         print(f"Error connecting to database: {e}")
         raise
-
 

@@ -39,8 +39,10 @@ def create_access_token(data: Dict, expires_delta: timedelta = timedelta(hours=1
 
 # Hàm đăng ký người dùng mới
 def register_user(user: RegisterRequest) -> Token:
+    email = user.email.strip().lower()
+
     # Kiểm tra xem email đã tồn tại chưa
-    existing_user = get_user_info_by_email(user.email)
+    existing_user = get_user_info_by_email(email)
     
     if existing_user:
         raise HTTPException(status_code=400, detail="Email already registered")
@@ -49,7 +51,7 @@ def register_user(user: RegisterRequest) -> Token:
     hashed_password = hash_password(user.password)
 
     # Lưu người dùng vào cơ sở dữ liệu
-    saved_user = save_user_info(user.email, hashed_password, user.fullname, user.gender)
+    saved_user = save_user_info(email, hashed_password, user.fullname, user.gender)
 
     user_id = saved_user["id"]
     # Tạo và trả về token
@@ -58,9 +60,15 @@ def register_user(user: RegisterRequest) -> Token:
 
 # Hàm đăng nhập người dùng
 def login_user(user: LoginRequest) -> int:
+    email = user.email.strip().lower()
+
     # Lấy thông tin người dùng từ cơ sở dữ liệu
-    db_user_password = get_user_info_by_email(user.email)["password"]
-    user_id = get_user_info_by_email(user.email)["id"]
+    db_user = get_user_info_by_email(email)
+    if not db_user:
+        raise HTTPException(status_code=401, detail="Invalid credentials")
+
+    db_user_password = db_user["password"]
+    user_id = db_user["id"]
     if not db_user_password or not verify_password(user.password, db_user_password):
         raise HTTPException(status_code=401, detail="Invalid credentials")
     
