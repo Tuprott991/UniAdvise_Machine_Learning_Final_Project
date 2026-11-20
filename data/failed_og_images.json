@@ -1,0 +1,346 @@
+[
+  {
+    "file": "crawl_1.md",
+    "slug": "crawl_1",
+    "name": "Đại học An ninh nhân dân (ANS)",
+    "website": "https://dhannd.edu.vn",
+    "image_candidate": null,
+    "reason": "no_valid_og_image"
+  },
+  {
+    "file": "crawl_104.md",
+    "slug": "crawl_104",
+    "name": "Trường Đại Học Mỹ Thuật Công Nghiệp (MTUS)",
+    "website": "https://mtud.edu.vn/",
+    "image_candidate": null,
+    "reason": "no_valid_og_image"
+  },
+  {
+    "file": "crawl_111.md",
+    "slug": "crawl_111",
+    "name": "Trường Đại học Ngoại thương (Cơ sở II) (FTU2)",
+    "website": "https://cs2.ftu.edu.vn/",
+    "image_candidate": null,
+    "reason": "no_valid_og_image"
+  },
+  {
+    "file": "crawl_115.md",
+    "slug": "crawl_115",
+    "name": "Trường Đại học Nông Lâm TP.HCM (NLU)",
+    "website": "http://www.hcmuaf.edu.vn",
+    "image_candidate": null,
+    "reason": "no_valid_og_image"
+  },
+  {
+    "file": "crawl_13.md",
+    "slug": "crawl_13",
+    "name": "Học viện An ninh nhân dân (ANND)",
+    "website": "https://hvannd.edu.vn",
+    "image_candidate": null,
+    "reason": "no_valid_og_image"
+  },
+  {
+    "file": "crawl_133.md",
+    "slug": "crawl_133",
+    "name": "Trường Đại Học Sư Phạm Nghệ Thuật Trung Ương (NUAE)",
+    "website": "http://www.spnttw.edu.vn",
+    "image_candidate": "https://spnttw.edu.vn/wp-content/themes/main/screenshot.png?v=30062026",
+    "reason": "no_valid_og_image"
+  },
+  {
+    "file": "crawl_134.md",
+    "slug": "crawl_134",
+    "name": "Trường Đại học Sư phạm TP.HCM (HCMUE)",
+    "website": "https://hcmue.edu.vn",
+    "image_candidate": null,
+    "reason": "no_valid_og_image"
+  },
+  {
+    "file": "crawl_136.md",
+    "slug": "crawl_136",
+    "name": "Trường Đại học Tài chính – Ngân hàng Hà Nội (FBU)",
+    "website": "https://fbu.edu.vn",
+    "image_candidate": null,
+    "reason": "no_valid_og_image"
+  },
+  {
+    "file": "crawl_147.md",
+    "slug": "crawl_147",
+    "name": "Trường Đại học Văn Lang (VLU)",
+    "website": "https://vlu.edu.vn/",
+    "image_candidate": "https://vluwebmedia.s3.ap-southeast-1.amazonaws.com/VLU_View010000_Post_moi_2022_077ecc58a4.jpg",
+    "reason": "no_valid_og_image"
+  },
+  {
+    "file": "crawl_15.md",
+    "slug": "crawl_15",
+    "name": "Học viện Biên phòng (HVBP)",
+    "website": "http://www.hvbp.edu.vn",
+    "image_candidate": null,
+    "reason": "no_valid_og_image"
+  },
+  {
+    "file": "crawl_150.md",
+    "slug": "crawl_150",
+    "name": "Trường Đại học Y Dược Cần Thơ (CTUMP)",
+    "website": "https://www.ctump.edu.vn",
+    "image_candidate": null,
+    "reason": "no_valid_og_image"
+  },
+  {
+    "file": "crawl_158.md",
+    "slug": "crawl_158",
+    "name": "Trường Đại học Y tế công cộng (HUPH)",
+    "website": "https://huph.edu.vn/",
+    "image_candidate": "https://huph.edu.vn/images/logo/logo-huph-2.jpg",
+    "reason": "no_valid_og_image"
+  },
+  {
+    "file": "crawl_162.md",
+    "slug": "crawl_162",
+    "name": "Trường Sĩ quan Lục quân 1 (Trường Đại học Trần Quốc Tuấn) (TQT Uni)",
+    "website": "http://www.sqlq1.edu.vn",
+    "image_candidate": null,
+    "reason": "no_valid_og_image"
+  },
+  {
+    "file": "crawl_18.md",
+    "slug": "crawl_18",
+    "name": "Học Viện Công Nghệ Bưu Chính Viễn Thông (Cơ sở TP.HCM) (PTITHCM)",
+    "website": "https://ptithcm.edu.vn",
+    "image_candidate": null,
+    "reason": "no_valid_og_image"
+  },
+  {
+    "file": "crawl_21.md",
+    "slug": "crawl_21",
+    "name": "Học Viện Hành Chính Quốc Gia (NAPA)",
+    "website": "https://www1.napa.vn/",
+    "image_candidate": null,
+    "reason": "no_valid_og_image"
+  },
+  {
+    "file": "crawl_24.md",
+    "slug": "crawl_24",
+    "name": "Học viện Kỹ thuật Quân sự (MTA)",
+    "website": "https://mta.edu.vn",
+    "image_candidate": null,
+    "reason": "no_valid_og_image"
+  },
+  {
+    "file": "crawl_25.md",
+    "slug": "crawl_25",
+    "name": "Học viện Ngân hàng (BAV)",
+    "website": "https://hvnh.edu.vn",
+    "image_candidate": "http://hvnh.edu.vn/publish/thumbnail/2306/1177x0xdefault/upload/2306/20170626/chaotansv.jpg",
+    "reason": "no_valid_og_image"
+  },
+  {
+    "file": "crawl_29.md",
+    "slug": "crawl_29",
+    "name": "Học Viện Quản Lý Giáo Dục (NAEM)",
+    "website": "https://www.naem.edu.vn/",
+    "image_candidate": null,
+    "reason": "no_valid_og_image"
+  },
+  {
+    "file": "crawl_30.md",
+    "slug": "crawl_30",
+    "name": "Học viện Quân Y (VMMU)",
+    "website": "http://www.hocvienquany.vn",
+    "image_candidate": null,
+    "reason": "no_valid_og_image"
+  },
+  {
+    "file": "crawl_33.md",
+    "slug": "crawl_33",
+    "name": "Học viện Tòa án (VCA)",
+    "website": "http://hvta.toaan.gov.vn",
+    "image_candidate": null,
+    "reason": "no_valid_og_image"
+  },
+  {
+    "file": "crawl_34.md",
+    "slug": "crawl_34",
+    "name": "Học viện Y Dược Học Cổ truyền Việt Nam (VUTM)",
+    "website": "http://vutm.edu.vn",
+    "image_candidate": "http://vutm.edu.vn/ShareLogo.jpg",
+    "reason": "no_valid_og_image"
+  },
+  {
+    "file": "crawl_4.md",
+    "slug": "crawl_4",
+    "name": "Đại học Đà Nẵng (UDN)",
+    "website": "https://www.udn.vn/",
+    "image_candidate": null,
+    "reason": "no_valid_og_image"
+  },
+  {
+    "file": "crawl_42.md",
+    "slug": "crawl_42",
+    "name": "Trường Cao đẳng Công nghệ và Thương mại Hà Nội",
+    "website": "https://htt.edu.vn",
+    "image_candidate": null,
+    "reason": "no_valid_og_image"
+  },
+  {
+    "file": "crawl_44.md",
+    "slug": "crawl_44",
+    "name": "Trường Cao đẳng Điện lực miền Bắc",
+    "website": "https://nepc.edu.vn",
+    "image_candidate": "https://nepc.edu.vn/ee2/wp-content/uploads/2019/03/logomobile.png",
+    "reason": "no_valid_og_image"
+  },
+  {
+    "file": "crawl_45.md",
+    "slug": "crawl_45",
+    "name": "Trường Cao đẳng Điện tử - Điện lạnh Hà Nội",
+    "website": "https://dtdl.edu.vn",
+    "image_candidate": null,
+    "reason": "no_valid_og_image"
+  },
+  {
+    "file": "crawl_47.md",
+    "slug": "crawl_47",
+    "name": "Trường Cao đẳng Đường sắt",
+    "website": "http://caodangduongsat.edu.vn",
+    "image_candidate": null,
+    "reason": "no_valid_og_image"
+  },
+  {
+    "file": "crawl_48.md",
+    "slug": "crawl_48",
+    "name": "Trường Cao đẳng Kinh doanh và Công nghệ Hà Nội",
+    "website": "https://kinhdoanhcongnghe.edu.vn/",
+    "image_candidate": null,
+    "reason": "no_valid_og_image"
+  },
+  {
+    "file": "crawl_50.md",
+    "slug": "crawl_50",
+    "name": "Trường Cao đẳng Kinh tế Công nghiệp Hà Nội",
+    "website": "https://hiec.edu.vn",
+    "image_candidate": null,
+    "reason": "no_valid_og_image"
+  },
+  {
+    "file": "crawl_56.md",
+    "slug": "crawl_56",
+    "name": "Trường Đại học Bách khoa ĐHQG TPHCM (HCMUT)",
+    "website": "https://www.hcmut.edu.vn",
+    "image_candidate": null,
+    "reason": "no_valid_og_image"
+  },
+  {
+    "file": "crawl_58.md",
+    "slug": "crawl_58",
+    "name": "Trường Đại học Chính trị (Trường Sĩ quan Chính trị) (POC)",
+    "website": "http://daihocchinhtri.edu.vn",
+    "image_candidate": null,
+    "reason": "no_valid_og_image"
+  },
+  {
+    "file": "crawl_59.md",
+    "slug": "crawl_59",
+    "name": "Trường Đại Học Công Đoàn (TUU)",
+    "website": "http://www.dhcd.edu.vn",
+    "image_candidate": null,
+    "reason": "no_valid_og_image"
+  },
+  {
+    "file": "crawl_68.md",
+    "slug": "crawl_68",
+    "name": "Trường Đại học Đà Lạt (DLU)",
+    "website": "https://dlu.edu.vn",
+    "image_candidate": null,
+    "reason": "no_valid_og_image"
+  },
+  {
+    "file": "crawl_72.md",
+    "slug": "crawl_72",
+    "name": "Trường Đại học Giáo dục, ĐHQGHN (UED)",
+    "website": "https://education.vnu.edu.vn",
+    "image_candidate": "https://education.vnu.edu.vn/images/socialfb.jpg",
+    "reason": "no_valid_og_image"
+  },
+  {
+    "file": "crawl_73.md",
+    "slug": "crawl_73",
+    "name": "Trường Đại học Giao thông vận tải - Cơ sở 2 (UTC2)",
+    "website": "https://utc2.edu.vn",
+    "image_candidate": "https://utc2.erp.meu-solutions.com/logo-preview.jpg",
+    "reason": "no_valid_og_image"
+  },
+  {
+    "file": "crawl_74.md",
+    "slug": "crawl_74",
+    "name": "Trường Đại học Giao thông Vận tải TPHCM (UTH)",
+    "website": "https://www.ut.edu.vn/",
+    "image_candidate": null,
+    "reason": "no_valid_og_image"
+  },
+  {
+    "file": "crawl_76.md",
+    "slug": "crawl_76",
+    "name": "Trường Đại học Hàng hải Việt Nam (VMU)",
+    "website": "https://vimaru.edu.vn/",
+    "image_candidate": null,
+    "reason": "no_valid_og_image"
+  },
+  {
+    "file": "crawl_77.md",
+    "slug": "crawl_77",
+    "name": "Trường Đại học Hà Nội (HANU)",
+    "website": "https://hanu.vn/",
+    "image_candidate": "https://i1.connections.vn/kt3PG1hPTgTPG1MJ.u54.L8JKx-X.LDJRmDYMY8YGaBUwCd48thp?q=wqQ2KLBn6g3dDaf29mOnD7stDafqMuNoKqDVMEONcibb",
+    "reason": "no_valid_og_image"
+  },
+  {
+    "file": "crawl_79.md",
+    "slug": "crawl_79",
+    "name": "Trường Đại học Hồng Đức (HDU)",
+    "website": "https://hdu.edu.vn/",
+    "image_candidate": "http://media.hdu.edu.vn/Media\\1_hdu_home\\FolderFunc\\202407\\Images/logo-hdu-removebg-20240730104539-e.png",
+    "reason": "no_valid_og_image"
+  },
+  {
+    "file": "crawl_81.md",
+    "slug": "crawl_81",
+    "name": "Trường Đại học Khoa học Tự nhiên, ĐHQGHN (HUS)",
+    "website": "http://www.hus.vnu.edu.vn/",
+    "image_candidate": null,
+    "reason": "no_valid_og_image"
+  },
+  {
+    "file": "crawl_86.md",
+    "slug": "crawl_86",
+    "name": "Trường Đại học Kiểm sát Hà Nội (HPU)",
+    "website": "https://hpu.vn",
+    "image_candidate": "https://tks.edu.vn/slideshow/ban-giam-hieu-lanh-dao_05052020092632729_qmdsvg2n.fph.jpg",
+    "reason": "no_valid_og_image"
+  },
+  {
+    "file": "crawl_87.md",
+    "slug": "crawl_87",
+    "name": "Trường Đại Học Kiến Trúc Hà Nội (HAU)",
+    "website": "https://hau.edu.vn",
+    "image_candidate": "https://hau.edu.vn/images/favicon.ico",
+    "reason": "no_valid_og_image"
+  },
+  {
+    "file": "crawl_92.md",
+    "slug": "crawl_92",
+    "name": "Trường Đại học Kinh tế, ĐHQGHN (UEV)",
+    "website": "https://ueb.edu.vn/",
+    "image_candidate": "https://old.ueb.edu.vn/Uploads/Article/luumaianh/2020_7/1%20Logo%20UEB%20doc_S1000%20PNG.png",
+    "reason": "no_valid_og_image"
+  },
+  {
+    "file": "crawl_93.md",
+    "slug": "crawl_93",
+    "name": "Trường Đại học Kinh tế Kỹ thuật Công nghiệp (UNETI)",
+    "website": "http://www.uneti.edu.vn",
+    "image_candidate": null,
+    "reason": "no_valid_og_image"
+  }
+]

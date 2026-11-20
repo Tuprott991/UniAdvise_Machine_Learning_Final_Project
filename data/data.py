@@ -1,18 +1,24 @@
 import os
 import psycopg2
 from pathlib import Path
+from dotenv import load_dotenv
+
+ROOT_DIR = Path(__file__).resolve().parents[1]
+for env_path in (ROOT_DIR / "Backend" / ".env", ROOT_DIR / ".env"):
+    if env_path.exists():
+        load_dotenv(env_path, override=False)
 
 # Cấu hình kết nối PostgreSQL
 conn = psycopg2.connect(
-    dbname="postgres",
-    user="admintu",
-    password="uniuno123@",
-    host="uniuno.postgres.database.azure.com",
-    port=5432
+    dbname=os.getenv("POSTGRES_DATABASE"),
+    user=os.getenv("POSTGRES_USER"),
+    password=os.getenv("POSTGRES_PASSWORD"),
+    host=os.getenv("POSTGRES_HOST"),
+    port=os.getenv("POSTGRES_PORT", 5432)
 )
 cursor = conn.cursor()
 
-folder_path = Path("crawl_results")
+folder_path = Path(__file__).resolve().parent / "crawl_results"
 target_sections = [
     "Giới thiệu",
     "Tin Tức Mới Nhất",

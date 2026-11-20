@@ -5,6 +5,8 @@ from database import get_db_connection
 from uuid import UUID
 from decimal import Decimal
 
+_user_info_initialized = False
+
 def init_user_info():
     """Initialize user_info table if it doesn't exist"""
     with get_db_connection() as conn:
@@ -24,8 +26,16 @@ def init_user_info():
             """)
         conn.commit()
 
+def ensure_user_info_table():
+    global _user_info_initialized
+    if _user_info_initialized:
+        return
+    init_user_info()
+    _user_info_initialized = True
+
 
 def append_thread(user_id: int, thread_id: str) -> Dict:
+    ensure_user_info_table()
     with get_db_connection() as conn:
         with conn.cursor() as cur:
             cur.execute(
@@ -43,6 +53,7 @@ def append_thread(user_id: int, thread_id: str) -> Dict:
 
 def save_user_info(email: str, password:str, fullname: str, gender: str) -> Dict:
     """Insert user information into database"""
+    ensure_user_info_table()
     with get_db_connection() as conn:
         with conn.cursor() as cur:
             cur.execute(
@@ -59,16 +70,17 @@ def save_user_info(email: str, password:str, fullname: str, gender: str) -> Dict
 
 def get_user_info_by_email(email: str) -> Dict:
     """Get user information by email"""
+    ensure_user_info_table()
     with get_db_connection() as conn:
         with conn.cursor() as cur:
             cur.execute(
                 """
-                SELECT * FROM user_info WHERE email = %s
+                SELECT * FROM user_info
+                WHERE lower(trim(email)) = lower(trim(%s))
+                ORDER BY id
+                LIMIT 1
                 """,
                 (email,)
             )
             result = cur.fetchone()
         return result
-
-
-init_user_info()

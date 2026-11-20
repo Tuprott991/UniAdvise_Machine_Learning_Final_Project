@@ -1,12 +1,9 @@
 from fastapi import APIRouter, HTTPException
-from services.advise_services import load_recommender_agent, load_learning_path_agent
+from services.advise_services import generate_learning_path, recommend_career
 from pydantic import BaseModel
 import logging
 
 router = APIRouter()
-
-recommender = load_recommender_agent()
-path_planner = load_learning_path_agent()
 
 class ProfileRequest(BaseModel):
     user_profile: str
@@ -16,15 +13,12 @@ class PathRequest(BaseModel):
     university: str
 
 @router.post("/recommend_career")
-def recommend_career(request: ProfileRequest):
-    result = recommender.run(user_profile=request.user_profile)
-    return {"career_suggestions": result}
+def recommend_career_endpoint(request: ProfileRequest):
+    result = recommend_career(request.user_profile)
+    return {"career_suggestions": {"content": result.content}}
 
 @router.post("/learning_path")
 def learning_path(request: PathRequest):
     logging.info(f"Received career: {request.career}, university: {request.university}")
-    result = path_planner.run({
-        "career": request.career,
-        "university": request.university
-    })
-    return {"learning_path": result}
+    result = generate_learning_path(request.career, request.university)
+    return {"learning_path": {"content": result.content}}

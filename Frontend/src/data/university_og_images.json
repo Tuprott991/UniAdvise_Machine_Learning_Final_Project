@@ -1,0 +1,962 @@
+[
+  {
+    "file": "crawl_10.md",
+    "slug": "crawl_10",
+    "name": "Đại học Thái Nguyên (TNU)",
+    "website": "https://tnu.edu.vn",
+    "image": "https://tnu.edu.vn/upload/2006712/20240807/logo_ce7cb.png",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_100.md",
+    "slug": "crawl_100",
+    "name": "Trường Đại Học Luật TP.HCM (HCMCUL)",
+    "website": "https://www.hcmulaw.edu.vn",
+    "image": "https://www.hcmulaw.edu.vn/Resources/assets/index/imgs/favicon.png",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_101.md",
+    "slug": "crawl_101",
+    "name": "Trường Đại học Mỏ Địa chất (HUMG)",
+    "website": "http://humg.edu.vn",
+    "image": "http://humg.edu.vn/favicon.ico?rev=23",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_102.md",
+    "slug": "crawl_102",
+    "name": "Trường Đại học Mở Hà Nội (HOU)",
+    "website": "https://hou.edu.vn",
+    "image": "https://hou.edu.vn/wp-content/uploads/2023/09/n-logohou.png",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_103.md",
+    "slug": "crawl_103",
+    "name": "Trường Đại học Mở TP. Hồ Chí Minh (HCMCOU)",
+    "website": "https://ou.edu.vn",
+    "image": "https://ou.edu.vn/wp-content/uploads/2019/01/OpenUniversity.png",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_105.md",
+    "slug": "crawl_105",
+    "name": "Trường Đại Học Mỹ Thuật TPHCM (HCMUFA)",
+    "website": "http://www.hcmufa.edu.vn",
+    "image": "http://www.hcmufa.edu.vn/public//images/fav.png",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_106.md",
+    "slug": "crawl_106",
+    "name": "Trường Đại Học Mỹ Thuật Việt Nam (VNUFA)",
+    "website": "http://mythuatvietnam.edu.vn/",
+    "image": "http://mythuatvietnam.edu.vn/uploaded/logo/share.jpg",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_107.md",
+    "slug": "crawl_107",
+    "name": "Trường Đại học Ngân hàng TP. Hồ Chí Minh (HUB)",
+    "website": "https://hub.edu.vn/",
+    "image": "https://hub.edu.vn/Portals/0/favicon.ico?ver=CkXfXexT6TaPYmnftbRZZA%3d%3d",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_108.md",
+    "slug": "crawl_108",
+    "name": "Trường Đại Học Ngoại Ngữ, Đại Học Đà Nẵng (UFL)",
+    "website": "https://ufl.udn.vn/",
+    "image": "https://ufl.udn.vn/theme/Dhnn/img/front/favicon.ico",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_109.md",
+    "slug": "crawl_109",
+    "name": "Trường Đại học Ngoại ngữ ĐHQGHN (ULIS)",
+    "website": "https://ulis.vnu.edu.vn/",
+    "image": "https://ulis.vnu.edu.vn/files/uploads/2023/12/cropped-ULIS-logo-2023-32x32.png",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_11.md",
+    "slug": "crawl_11",
+    "name": "Đại học Vinh (VinhUni)",
+    "website": "https://vinhuni.edu.vn/",
+    "image": "https://vinhuni.edu.vn/pages/assets/images/vu-logo.png",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_110.md",
+    "slug": "crawl_110",
+    "name": "Trường Đại học Ngoại ngữ - Tin học TP.HCM (HUFLIT)",
+    "website": "https://huflit.edu.vn",
+    "image": "https://huflit.edu.vn/wp-content/uploads/2023/06/huflit-svh-thumbnail-1.jpg",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_112.md",
+    "slug": "crawl_112",
+    "name": "Trường Đại học Ngoại thương (FTU)",
+    "website": "https://ftu.edu.vn/",
+    "image": "http://ftu.edu.vn/images/THUMB/LOGOFTUTHUMBNAIL.png",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_113.md",
+    "slug": "crawl_113",
+    "name": "Trường Đại Học Nguyễn Tất Thành (NTTU)",
+    "website": "https://ntt.edu.vn",
+    "image": "https://ntt.edu.vn/wp-content/uploads/2026/01/favicon-1.ico",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_114.md",
+    "slug": "crawl_114",
+    "name": "Trường Đại Học Nha Trang (NTU)",
+    "website": "https://ntu.edu.vn",
+    "image": "https://ntu.edu.vn/icons/icon.png",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_116.md",
+    "slug": "crawl_116",
+    "name": "Trường Đại học Phenikaa (PhenikaaUni)",
+    "website": "https://phenikaa-uni.edu.vn/",
+    "image": "https://phenikaa-uni.edu.vn:3600/pu/vi/chuongtrinh.jpg",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_117.md",
+    "slug": "crawl_117",
+    "name": "Trường Đại Học Phương Đông (PDU)",
+    "website": "https://phuongdong.edu.vn",
+    "image": "https://phuongdong.edu.vn/storage/upd-primary-logo-upd-primary-logo-full-version.png",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_118.md",
+    "slug": "crawl_118",
+    "name": "Trường Đại học Quản lý và Công nghệ TP.HCM (UMT)",
+    "website": "https://www.umt.edu.vn",
+    "image": "https://sdn.umt.edu.vn/Logo_UMT_2_ca6ac362e2.png",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_119.md",
+    "slug": "crawl_119",
+    "name": "Trường Đại học Quốc tế, ĐHQG TPHCM (HCMIU)",
+    "website": "https://hcmiu.edu.vn/",
+    "image": "https://hcmiu.edu.vn/wp-content/uploads/2017/02/logo-favicon-50x50.png",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_12.md",
+    "slug": "crawl_12",
+    "name": "Học Viện Âm Nhạc Quốc Gia Việt Nam (VNAM)",
+    "website": "https://www.vnam.edu.vn",
+    "image": "https://www.vnam.edu.vn/images/banner/banner1.jpg",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_120.md",
+    "slug": "crawl_120",
+    "name": "Trường Đại Học Quốc Tế Hồng Bàng (HIU)",
+    "website": "https://hiu.vn/",
+    "image": "https://hiu.vn/wp-content/uploads/2020/02/Logo-HBU-Final.png",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_121.md",
+    "slug": "crawl_121",
+    "name": "Trường Đại học Quốc tế Miền Đông (EIU)",
+    "website": "https://eiu.edu.vn",
+    "image": "https://eiu.edu.vn/wp-content/uploads/2025/11/eastern-international-university-3.jpg",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_122.md",
+    "slug": "crawl_122",
+    "name": "Trường Đại học Sài Gòn (SGU)",
+    "website": "https://www.sgu.edu.vn",
+    "image": "https://www.sgu.edu.vn/wp-content/uploads/2026/01/logo_SGU_big-e1768900451739.png",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_123.md",
+    "slug": "crawl_123",
+    "name": "Trường Đại Học Sân Khấu Điện Ảnh Hà Nội (SKDA)",
+    "website": "https://skda.edu.vn",
+    "image": "https://skda.edu.vn/wp-content/uploads/dh-san-khau-dien-anh-ha-noi-1560399069739955841328.jpg",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_124.md",
+    "slug": "crawl_124",
+    "name": "Trường Đại Học Sân Khấu Điện Ảnh TPHCM (SKDA)",
+    "website": "https://skdahcm.edu.vn",
+    "image": "https://skdahcm.edu.vn/wp-content/uploads/2023/06/cropped-cropped-Logo-Truong-Dai-hoc-San-khau-Dien-anh-Thanh-pho-Ho-Chi-Minh-1.webp",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_125.md",
+    "slug": "crawl_125",
+    "name": "Trường Đại Học Sư Phạm, Đại Học Đà Nẵng (UED)",
+    "website": "https://ued.udn.vn",
+    "image": "https://ued.udn.vn/wp-content/uploads/2025/08/logo-500.png",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_126.md",
+    "slug": "crawl_126",
+    "name": "Trường Đại học Sư phạm, Đại học Huế (HUE)",
+    "website": "https://hueuni.edu.vn",
+    "image": "https://hueuni.edu.vn/portal/vi/templates/logo.png",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_127.md",
+    "slug": "crawl_127",
+    "name": "Trường Đại học Sư phạm, Đại học Thái Nguyên (TNUE)",
+    "website": "https://tnue.edu.vn",
+    "image": "https://tnue.edu.vn/Data/Sites/1/skins/framework/img/favicons/apple-touch-icon-57x57.png",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_128.md",
+    "slug": "crawl_128",
+    "name": "Trường Đại học Sư phạm Hà Nội 2 (HPU2)",
+    "website": "https://www.hpu2.edu.vn",
+    "image": "https://www.hpu2.edu.vn/templates/themes/portal01/layout/images/macdinh_tinbai_360_200.png",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_129.md",
+    "slug": "crawl_129",
+    "name": "Trường Đại học Sư phạm Hà Nội (HNUE)",
+    "website": "https://hnue.edu.vn",
+    "image": "https://hnue.edu.vn/HNUE_EDU/logoHNUE.png",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_130.md",
+    "slug": "crawl_130",
+    "name": "Trường Đại Học Sư Phạm Kỹ Thuật Hưng Yên (UTEHY)",
+    "website": "https://utehy.edu.vn/",
+    "image": "https://utehy.edu.vn/assets/images/logo.png",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_131.md",
+    "slug": "crawl_131",
+    "name": "Trường Đại học Sư phạm Kỹ thuật Nam Định (NUTE)",
+    "website": "https://nute.edu.vn",
+    "image": "https://www.nute.edu.vn/nute.jpg",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_132.md",
+    "slug": "crawl_132",
+    "name": "Trường Đại học Sư phạm Kỹ thuật Thành phố Hồ Chí Minh (HCMUTE)",
+    "website": "https://hcmute.edu.vn/",
+    "image": "https://hcmute.edu.vn/Resources/Images/SubDomain/HomePage/Gioi%20thieu/%C4%90%E1%BB%95i%20t%C3%AAn%20tr%C6%B0%E1%BB%9Dng/Banner%20web%20Viet%20copy.jpg",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_135.md",
+    "slug": "crawl_135",
+    "name": "Trường Đại học Tài chính - Marketing (UFM)",
+    "website": "https://ufm.edu.vn",
+    "image": "https://ufm.edu.vn/images/favicons/favicon-32x32.png",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_137.md",
+    "slug": "crawl_137",
+    "name": "Trường Đại học Tân Tạo (TTU)",
+    "website": "https://ttu.edu.vn",
+    "image": "https://ttu.edu.vn/wp-content/uploads/2020/07/ttu346234.jpg",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_138.md",
+    "slug": "crawl_138",
+    "name": "Trường Đại học Thăng Long (TLU)",
+    "website": "https://thanglong.edu.vn",
+    "image": "https://thanglong.edu.vn/sites/default/files/2020-04/banner.png",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_139.md",
+    "slug": "crawl_139",
+    "name": "Trường Đại Học Thể Dục Thể Thao Bắc Ninh (UPES1)",
+    "website": "http://upes1.edu.vn",
+    "image": "https://upes1.edu.vn/wp-content/uploads/2024/10/logo-ban-nho.png",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_14.md",
+    "slug": "crawl_14",
+    "name": "Học viện Báo chí và Tuyên truyền (AJC)",
+    "website": "https://ajc.hcma.vn",
+    "image": "https://ajc.hcma.vn/Content/images/logonew.png",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_140.md",
+    "slug": "crawl_140",
+    "name": "Trường Đại học Thủ Dầu Một (TDMU)",
+    "website": "https://tdmu.edu.vn",
+    "image": "https://tdmu.edu.vn/img/brand/Logo_tdmu_2024_seo_v2.png",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_141.md",
+    "slug": "crawl_141",
+    "name": "Trường Đại học Thủ đô Hà Nội (HNMU)",
+    "website": "https://hnmu.edu.vn",
+    "image": "https://hnmu.edu.vn/sites/default/files/fav_0.png",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_142.md",
+    "slug": "crawl_142",
+    "name": "Trường Đại Học Thương mại (TMU)",
+    "website": "https://tmu.edu.vn/",
+    "image": "https://tmu.edu.vn/upload/setting/thumb_800x800/website-seo-img-1755747912.jpg",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_143.md",
+    "slug": "crawl_143",
+    "name": "Trường Đại học Thủy lợi (TLU)",
+    "website": "https://tlus.edu.vn",
+    "image": "https://tlus.edu.vn/wp-content/uploads/2024/04/cropped-Logo_PHDHTL@4x-32x32.png",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_144.md",
+    "slug": "crawl_144",
+    "name": "Trường Đại học Tôn Đức Thắng (TDTU)",
+    "website": "https://www.tdtu.edu.vn",
+    "image": "https://www.tdtu.edu.vn/sites/www/files/favicon.ico",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_145.md",
+    "slug": "crawl_145",
+    "name": "Trường Đại học Văn hóa Hà Nội (HUC)",
+    "website": "https://huc.edu.vn",
+    "image": "https://huc.edu.vn/img/anh/anhbanner4.jpg",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_146.md",
+    "slug": "crawl_146",
+    "name": "Trường Đại học Văn hóa TP.HCM (HCMUC)",
+    "website": "http://www.hcmuc.edu.vn",
+    "image": "https://www.hcmuc.edu.vn/img_data/images/LOGO/icon.png",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_148.md",
+    "slug": "crawl_148",
+    "name": "Trường Đại học VinUniversity (VinUni)",
+    "website": "https://vinuni.edu.vn",
+    "image": "https://vinuni.edu.vn/wp-content/uploads/2020/02/cropped-VINUNI_LOGO-FULL-_BẢN-DỌC-Copy-2-32x32.png",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_149.md",
+    "slug": "crawl_149",
+    "name": "Trường Đại học Xây dựng Hà Nội (HUCE)",
+    "website": "https://huce.edu.vn/",
+    "image": "https://huce.edu.vn/dist/img/logonuce.png",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_151.md",
+    "slug": "crawl_151",
+    "name": "Trường Đại học Y Dược, ĐHQGHN (UMP)",
+    "website": "https://ump.edu.vn/",
+    "image": "https://ump.edu.vn/img/image-default.png",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_152.md",
+    "slug": "crawl_152",
+    "name": "Trường Đại học Y Dược Hải Phòng (HPMU)",
+    "website": "http://hpmu.edu.vn",
+    "image": "https://hpmu.edu.vn/hpmu/favicon.ico",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_153.md",
+    "slug": "crawl_153",
+    "name": "Trường Đại học Y Dược Thái Bình (TBUMP)",
+    "website": "http://tbump.edu.vn/",
+    "image": "http://tbump.edu.vn/favicon.ico",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_154.md",
+    "slug": "crawl_154",
+    "name": "Trường Đại học Y Dược TP.HCM (UMP)",
+    "website": "https://ump.edu.vn/",
+    "image": "https://ump.edu.vn/img/image-default.png",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_155.md",
+    "slug": "crawl_155",
+    "name": "Trường Đại học Y Hà Nội (HMU)",
+    "website": "https://hmu.edu.vn/",
+    "image": "https://hmu.edu.vn/assets/img/logo1.png",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_156.md",
+    "slug": "crawl_156",
+    "name": "Trường Đại học Y khoa Phạm Ngọc Thạch (PNTU)",
+    "website": "https://www.pnt.edu.vn/",
+    "image": "https://www.pnt.edu.vn/Resources/assets/index/imgs/favicon.png",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_157.md",
+    "slug": "crawl_157",
+    "name": "Trường Đại học Y khoa Vinh (YKV)",
+    "website": "https://www.vmu.edu.vn",
+    "image": "https://x.onednn.com/img.thumb/png-600x0-0-74/cdn/vmu/logo-vmu.png",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_159.md",
+    "slug": "crawl_159",
+    "name": "Trường Khoa học liên ngành và Nghệ thuật, ĐHQGHN (VNU-SIS)",
+    "website": "https://sis.vnu.edu.vn",
+    "image": "https://sis.vnu.edu.vn/images/Sis_logo_full.png",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_16.md",
+    "slug": "crawl_16",
+    "name": "Học viện Cảnh sát nhân dân (PPA)",
+    "website": "https://hvcsnd.edu.vn",
+    "image": "https://hvcsnd.edu.vn/logo.png",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_160.md",
+    "slug": "crawl_160",
+    "name": "Trường Quản trị và Kinh doanh, ĐHQGHN (HSB)",
+    "website": "https://hsb.edu.vn",
+    "image": "https://www.hsb.edu.vn/favicon.png",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_161.md",
+    "slug": "crawl_161",
+    "name": "Trường Quốc tế, Đại học Quốc gia Hà Nội (VNU-IS)",
+    "website": "https://www.is.vnu.edu.vn/",
+    "image": "https://www.is.vnu.edu.vn/favicon.ico",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_163.md",
+    "slug": "crawl_163",
+    "name": "Trường Sĩ Quan Lục Quân 2 - Đại học Nguyễn Huệ (NHU)",
+    "website": "https://www.qdnd.vn/quoc-phong-an-ninh/tin-tuc/truong-si-quan-luc-quan-2-tu-van-tuyen-sinh-quan-su-tai-tinh-long-an-820234",
+    "image": "https://file3.qdnd.vn/data/images/0/2025/03/19/upload_2083/14032025vthuy30.jpg?w=400",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_17.md",
+    "slug": "crawl_17",
+    "name": "Học Viện Chính Sách và Phát Triển (APD)",
+    "website": "http://apd.edu.vn/",
+    "image": "https://apd.edu.vn/img/banner.jpg",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_19.md",
+    "slug": "crawl_19",
+    "name": "Học viện Công nghệ Bưu chính Viễn thông (PTIT)",
+    "website": "https://ptit.edu.vn/",
+    "image": "https://ptit.edu.vn/wp-content/images/empty.png",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_2.md",
+    "slug": "crawl_2",
+    "name": "Đại học Bách khoa Hà Nội (HUST)",
+    "website": "https://hust.edu.vn/",
+    "image": "https://hust.edu.vn/uploads/sys/android-icon-36x36.png",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_20.md",
+    "slug": "crawl_20",
+    "name": "Học viện Hàng không Việt Nam (VAA)",
+    "website": "https://vaa.edu.vn",
+    "image": "https://vaa.edu.vn/wp-content/uploads/2024/05/logo-vaa.png",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_22.md",
+    "slug": "crawl_22",
+    "name": "Học viện Hậu cần (MAL)",
+    "website": "http://hocvienhaucan.edu.vn",
+    "image": "https://hocvienhaucan.edu.vn/themes/hvhc/assets/images/favicon.png",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_23.md",
+    "slug": "crawl_23",
+    "name": "Học viện Kỹ thuật Mật mã (KMA)",
+    "website": "https://actvn.edu.vn",
+    "image": "https://actvn.edu.vn/images/logoico.png",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_26.md",
+    "slug": "crawl_26",
+    "name": "Học viện Ngoại giao (DAV)",
+    "website": "https://www.dav.edu.vn",
+    "image": "https://static.dav.edu.vn/v2/App_themes/images/favicon.ico",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_27.md",
+    "slug": "crawl_27",
+    "name": "Học viện Nông nghiệp Việt Nam (VNUA)",
+    "website": "https://vnua.edu.vn",
+    "image": "https://vnua.edu.vn/Portals/0/logoHVNN.ico?ver=2018-12-25-093425-527",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_28.md",
+    "slug": "crawl_28",
+    "name": "Học viện Phụ nữ Việt Nam (VWA)",
+    "website": "https://hvpnvn.edu.vn",
+    "image": "https://hvpnvn.edu.vn/wp-content/uploads/sites/63/2023/09/logo.svg",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_3.md",
+    "slug": "crawl_3",
+    "name": "Đại học Cần Thơ (CTU)",
+    "website": "https://www.ctu.edu.vn/",
+    "image": "https://www.ctu.edu.vn/favicon.ico",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_31.md",
+    "slug": "crawl_31",
+    "name": "Học viện Tài chính (AOF)",
+    "website": "https://hvtc.edu.vn",
+    "image": "https://hvtc.edu.vn/css_moi/LogoAOF_Mau_1.png",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_32.md",
+    "slug": "crawl_32",
+    "name": "Học Viện Thanh thiếu niên Việt Nam (VYA)",
+    "website": "https://vya.edu.vn",
+    "image": "https://vya.edu.vn/upload/images/logo.png?v=1782788483",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_35.md",
+    "slug": "crawl_35",
+    "name": "Nhạc Viện TPHCM (HCMCONS)",
+    "website": "https://hcmcons.vn",
+    "image": "https://hcmcons.vn/images/logo1.png",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_36.md",
+    "slug": "crawl_36",
+    "name": "Trường Cao đẳng Bách nghệ Hà Nội",
+    "website": "https://hbnc.edu.vn",
+    "image": "https://hbnc.edu.vn/wp-content/uploads/2025/05/cropped-hbnc-32x32.png",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_37.md",
+    "slug": "crawl_37",
+    "name": "Trường Cao đẳng Cộng đồng Hà Tây",
+    "website": "https://htcc.edu.vn",
+    "image": "http://htcc.edu.vn/wp-content/uploads/2017/03/logotruong2.png",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_38.md",
+    "slug": "crawl_38",
+    "name": "Trường Cao đẳng Công nghệ Bách khoa Hà Nội",
+    "website": "https://bachkhoahanoi.edu.vn",
+    "image": "https://bachkhoahanoi.edu.vn/wp-content/uploads/2026/03/banner-web-2026_1920x690-1-1.png",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_39.md",
+    "slug": "crawl_39",
+    "name": "Trường Cao đẳng Công nghệ cao Hà Nội",
+    "website": "https://hht.edu.vn",
+    "image": "https://hht.edu.vn/wp-content/uploads/2024/12/favicon.png",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_40.md",
+    "slug": "crawl_40",
+    "name": "Trường Cao đẳng Công nghệ và Kinh tế Hà Nội",
+    "website": "https://hateco.edu.vn",
+    "image": "https://hateco.edu.vn/wp-content/uploads/2025/01/cropped-logo-hateco-3-32x32.png",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_41.md",
+    "slug": "crawl_41",
+    "name": "Trường Cao đẳng Công nghệ và Môi trường",
+    "website": "https://nncn.edu.vn/",
+    "image": "https://nncn.edu.vn/wp-content/uploads/2026/06/sinh-vien-ftc-1.jpg",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_43.md",
+    "slug": "crawl_43",
+    "name": "Trường Cao đẳng Công Thương Hà Nội",
+    "website": "https://hcit.edu.vn",
+    "image": "https://cdn0986.cdn4s.com/media/logo/truong-cao-dang-cong-thuong-ha-noi-hcit-edu-vn.jpg",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_46.md",
+    "slug": "crawl_46",
+    "name": "Trường Cao đẳng Du lịch Hà Nội",
+    "website": "https://www.htc.edu.vn",
+    "image": "https://htc.edu.vn/pic/SystemWebsite/anh638977739127453051.jpg",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_49.md",
+    "slug": "crawl_49",
+    "name": "Trường Cao đẳng Kinh tế Công nghệ Hà Nội",
+    "website": "https://hateco.edu.vn",
+    "image": "https://hateco.edu.vn/wp-content/uploads/2025/01/cropped-logo-hateco-3-32x32.png",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_5.md",
+    "slug": "crawl_5",
+    "name": "Đại học Duy Tân (DTU)",
+    "website": "https://duytan.edu.vn",
+    "image": "https://ep-fd-files02-duytan-fqa4dvfcdadxbebg.a02.azurefd.net/svruploads/dtu-duytan/upload/images/638994047304972135-DuyTanUniversity.jpg",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_51.md",
+    "slug": "crawl_51",
+    "name": "Trường Cao đẳng Kỹ thuật Y Dược Hà Nội",
+    "website": "https://caodangkythuatyduochanoi.vn",
+    "image": "https://caodangkythuatyduochanoi.vn/uploads/images/logo/logo2.jpg",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_52.md",
+    "slug": "crawl_52",
+    "name": "Trường Cao đẳng Nghệ thuật Hà Nội",
+    "website": "http://nghethuathanoi.edu.vn",
+    "image": "https://nghethuathanoi.edu.vn/wp-content/uploads/2025/11/Icon-photos.png",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_53.md",
+    "slug": "crawl_53",
+    "name": "Trường Đại Học Anh Quốc Việt Nam (BUV)",
+    "website": "https://www.buv.edu.vn",
+    "image": "https://www.buv.edu.vn/wp-content/themes/main/screenshot.png",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_54.md",
+    "slug": "crawl_54",
+    "name": "Trường Đại học An ninh Nhân dân (VPSU)",
+    "website": "https://dhannd.bocongan.gov.vn",
+    "image": "https://dhannd.bocongan.gov.vn/image/catalog/system/logo-t04-200.png",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_55.md",
+    "slug": "crawl_55",
+    "name": "Trường Đại Học Bách Khoa, Đại Học Đà Nẵng (DUT)",
+    "website": "https://dut.udn.vn/",
+    "image": "https://dut.udn.vn/portals/_default/skins/dhbk/img/front/logo.png",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_57.md",
+    "slug": "crawl_57",
+    "name": "Trường Đại học Cảnh sát nhân dân (PPU)",
+    "website": "https://dhcsnd.edu.vn/",
+    "image": "https://dhcsnd.edu.vn/favicon.ico?favicon.3fb9d2a1.ico",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_6.md",
+    "slug": "crawl_6",
+    "name": "Đại học Huế (HU)",
+    "website": "https://hueuni.edu.vn",
+    "image": "https://hueuni.edu.vn/portal/vi/templates/logo.png",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_60.md",
+    "slug": "crawl_60",
+    "name": "Trường Đại học Công nghệ ĐHQGHN (UET)",
+    "website": "https://uet.vnu.edu.vn",
+    "image": "https://2489013871.e.cdneverest.net/uet.edu.vn/2017/02/cropped-logo2_new-1-32x32.png",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_61.md",
+    "slug": "crawl_61",
+    "name": "Trường Đại học Công nghệ Thông tin ĐHQG TPHCM (UIT)",
+    "website": "https://www.uit.edu.vn",
+    "image": "https://www.uit.edu.vn/media/uit_thumbnail_72a6453358.png",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_62.md",
+    "slug": "crawl_62",
+    "name": "Trường Đại học Công nghệ TPHCM (HUTECH)",
+    "website": "http://www.hutech.edu.vn",
+    "image": "https://www.hutech.edu.vn/images/logo.png",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_63.md",
+    "slug": "crawl_63",
+    "name": "Trường Đại học Công nghiệp Hà Nội (HAUI)",
+    "website": "http://www.haui.edu.vn",
+    "image": "https://www.haui.edu.vn/dnn/web/haui/assets/images/favicon.png",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_64.md",
+    "slug": "crawl_64",
+    "name": "Trường Đại học Công nghiệp TPHCM (IUH)",
+    "website": "https://iuh.edu.vn/",
+    "image": "https://iuh.edu.vn/assets/images/iuh.png?v=51",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_65.md",
+    "slug": "crawl_65",
+    "name": "Trường Đại học Công nghiệp Vinh (IUV)",
+    "website": "https://www.iuv.edu.vn",
+    "image": "http://www.iuv.edu.vn/cms/static/site/sale_cnvinh/template/default/images/logo.png",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_66.md",
+    "slug": "crawl_66",
+    "name": "Trường Đại Học Công Thương TPHCM (HUIT)",
+    "website": "https://huit.edu.vn",
+    "image": "https://huit.edu.vn/images/tin-tuc-hoat-dong/truong-dai-hoc-cong-nghiep-thuc-pham-tp-hcm-hufi-chinh-thuc-doi-ten-thanh-truong-dai-hoc-cong-thuong-tp-hcm-huit.jpg",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_67.md",
+    "slug": "crawl_67",
+    "name": "Trường Đại học Đại Nam",
+    "website": "https://dainam.edu.vn",
+    "image": "https://dainam.edu.vn/img/logo/dai-nam-logo-img.svg",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_69.md",
+    "slug": "crawl_69",
+    "name": "Trường Đại học Điện lực (EPU)",
+    "website": "https://epu.edu.vn",
+    "image": "https://epu.edu.vn/asset/banner-2.jpg",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_7.md",
+    "slug": "crawl_7",
+    "name": "Đại học Kinh tế Quốc dân (NEU)",
+    "website": "https://neu.edu.vn",
+    "image": "https://neu.edu.vn/wp-content/uploads/2024/07/NEU1.webp",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_70.md",
+    "slug": "crawl_70",
+    "name": "Trường Đại học Dược Hà Nội (HUP)",
+    "website": "http://www.hup.edu.vn",
+    "image": "https://www.hup.edu.vn/data/orgs/2/2/1/images/logo-vi.png",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_71.md",
+    "slug": "crawl_71",
+    "name": "Trường Đại Học FPT (FPT)",
+    "website": "https://daihoc.fpt.edu.vn",
+    "image": "https://daihoc.fpt.edu.vn/wp-content/uploads/2025/12/2-2-1024x683.jpg",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_75.md",
+    "slug": "crawl_75",
+    "name": "Trường Đại học Giao thông vận tải (UTC)",
+    "website": "https://www.utc.edu.vn/",
+    "image": "https://www.utc.edu.vn/assets/utc/images/logo.png",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_78.md",
+    "slug": "crawl_78",
+    "name": "Trường Đại Học Hoa Sen (HSU)",
+    "website": "https://www.hoasen.edu.vn",
+    "image": "https://www.hoasen.edu.vn/wp-content/uploads/2026/05/hoasen35nam.png",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_8.md",
+    "slug": "crawl_8",
+    "name": "Đại học Ngoại ngữ, Đại học Huế (HUFLIS)",
+    "website": "https://huflis.edu.vn",
+    "image": "https://huflis.edu.vn/vi/favicon.ico",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_80.md",
+    "slug": "crawl_80",
+    "name": "Trường Đại học Khoa học Sức khỏe, ĐHQG TP.HCM (UHS)",
+    "website": "https://www.uhsvnu.edu.vn",
+    "image": "https://www.uhsvnu.edu.vn/_next/static/media/logo-UHS.e1fe2cac.png",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_82.md",
+    "slug": "crawl_82",
+    "name": "Trường Đại học Khoa học Tự nhiên ĐHQG TPHCM (HCMUS)",
+    "website": "https://hcmus.edu.vn/",
+    "image": "https://hcmus.edu.vn/wp-content/uploads/2025/02/Anh-bia-chung-1.png",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_83.md",
+    "slug": "crawl_83",
+    "name": "Trường Đại Học Khoa Học Và Công Nghệ Hà Nội (USTH)",
+    "website": "https://usth.edu.vn/",
+    "image": "https://usth.edu.vn/wp-content/uploads/2022/08/logo-165.jpg",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_84.md",
+    "slug": "crawl_84",
+    "name": "Trường Đại học Khoa học xã hội và Nhân văn ĐHQGHN (USSH)",
+    "website": "https://ussh.vnu.edu.vn",
+    "image": "https://ussh.vnu.edu.vn/uploads/ussh/logo-ussh-2_100_100.png",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_85.md",
+    "slug": "crawl_85",
+    "name": "Trường Đại học Khoa học Xã hội và Nhân văn ĐHQG TPHCM (VNUHCM USSH)",
+    "website": "https://hcmussh.edu.vn",
+    "image": "https://hcmussh.edu.vn/image/logo-hcmussh.png",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_88.md",
+    "slug": "crawl_88",
+    "name": "Trường Đại học Kiến trúc TP.HCM (UAH)",
+    "website": "http://www.uah.edu.vn",
+    "image": "https://www.uah.edu.vn/themes/uah_asia/favicon/favicon-32x32.png",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_89.md",
+    "slug": "crawl_89",
+    "name": "Trường Đại Học Kinh Doanh và Công Nghệ Hà Nội (HUBT)",
+    "website": "https://hubt.edu.vn/",
+    "image": "https://hubt.edu.vn/wp-content/uploads/kdcn-ABNS-1.jpg",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_9.md",
+    "slug": "crawl_9",
+    "name": "Đại học Quốc gia Hà Nội (VNU)",
+    "website": "https://vnu.edu.vn",
+    "image": "https://files.vnu.edu.vn/image/images/noimages-169.jpg",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_90.md",
+    "slug": "crawl_90",
+    "name": "Trường Đại học Kinh tế, Đại học Đà Nẵng (DUE)",
+    "website": "https://due.udn.vn",
+    "image": "https://due.udn.vn/portals/_default/skins/dhkt/img/front/logoDUE.png",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_91.md",
+    "slug": "crawl_91",
+    "name": "Trường Đại Học Kinh Tế, Đại Học Huế (HCE)",
+    "website": "https://hce.edu.vn",
+    "image": "https://hce.edu.vn/HUE.jpg",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_94.md",
+    "slug": "crawl_94",
+    "name": "Trường Đại học Kinh tế Luật ĐHQG TPHCM (UEL)",
+    "website": "https://www.uel.edu.vn/",
+    "image": "https://www.uel.edu.vn/storage/logo.svg",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_95.md",
+    "slug": "crawl_95",
+    "name": "Trường Đại học Kinh tế - Tài chính TP.HCM (UEF)",
+    "website": "https://www.uef.edu.vn",
+    "image": "https://static-cdn.uef.edu.vn/s-img/uef-fb-thumnail.jpg",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_96.md",
+    "slug": "crawl_96",
+    "name": "Trường Đại học Kinh tế TPHCM (UEH)",
+    "website": "https://www.ueh.edu.vn/",
+    "image": "https://ueh.edu.vn/images/ueh-logo.jpg",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_97.md",
+    "slug": "crawl_97",
+    "name": "Trường Đại học Kỹ thuật Y tế Hải Dương (HMTU)",
+    "website": "http://www.hmtu.edu.vn",
+    "image": "https://hmtu.edu.vn/wp-content/uploads/2025/04/logo-1.png",
+    "source": "html_fallback"
+  },
+  {
+    "file": "crawl_98.md",
+    "slug": "crawl_98",
+    "name": "Trường Đại học Luật, ĐHQGHN (VNU-UL)",
+    "website": "https://law.vnu.edu.vn",
+    "image": "https://law.vnu.edu.vn/wp-content/uploads/2025/06/icon-news-1.png",
+    "source": "opengraph"
+  },
+  {
+    "file": "crawl_99.md",
+    "slug": "crawl_99",
+    "name": "Trường Đại học Luật Hà Nội (HLU)",
+    "website": "https://hlu.edu.vn",
+    "image": "https://hlu.edu.vn/Content/Site/images/logo.png",
+    "source": "opengraph"
+  }
+]
